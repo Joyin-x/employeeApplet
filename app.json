@@ -1,0 +1,44 @@
+{
+	"pages": [
+		"pages/index/index",
+		"pages/logs/logs",
+		"pages/list/list"
+	],
+	"window": {
+		"backgroundTextStyle": "#fff",
+		"navigationBarBackgroundColor": "#00c8fa",
+		"navigationBarTitleText": "首页",
+		"navigationBarTextStyle": "black"
+	},
+	"tabBar": {
+		"color": "#000",
+		"selectedColor": "#00c8fa",
+		"borderStyle": "#00c8fa",
+		"list": [
+			{
+				"selectedIconPath": "images/shouye1.png",
+				"iconPath": "images/shouye.png",
+				"pagePath": "pages/index/index",
+				"text": "首页"
+			},
+			{
+				"selectedIconPath": "images/xiaoxi1.png",
+				"iconPath": "images/xiaoxi.png",
+				"pagePath": "pages/index/index",
+				"text": "消息"
+			},
+			{
+				"selectedIconPath": "images/work1.png",
+				"iconPath": "images/work.png",
+				"pagePath": "pages/index/index",
+				"text": "工作"
+			},
+			{
+				"selectedIconPath": "images/geren1.png",
+				"iconPath": "images/geren.png",
+				"pagePath": "pages/index/index",
+				"text": "我的"
+			}
+		]
+	}
+}
