@@ -1,0 +1,40 @@
+<!--pages/login/login.wxml-->
+<view class="cu-custom" style="height:{{CustomBar}}px;">
+  <view class="cu-bar fixed bg-gradual-blue" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+    <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
+      <view class='content' style='top:{{StatusBar}}px;'>登录</view>
+    </navigator>
+  </view>
+</view>
+<view>
+  <image src="https://weixiong.info/image/work.jpg" mode='aspectFill' style='width:100%;height:486rpx'></image>
+</view>
+<form bindsubmit="loginSubmit" enctype="multipart/form-data">
+  <view class="cu-list menu sm-border card-menu margin-top">
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-mobile text-blue'></text>
+        <text class='text-grey'>手机号</text>
+      </view>
+      <view class='action fontsize'>
+        <input name="phone" placeholder="请输入手机号" class='radius'></input>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-lock text-brown'></text>
+        <text class='text-grey'>密码</text>
+      </view>
+      <view class='action fontsize'>
+        <input name="password" placeholder="请输入密码" class='radius' type="password"></input>
+      </view>
+    </view>
+    <view class='bg-white fontsize' style='padding-right:30rpx' bindtap='forgetPassword'>
+      <view class='text-right text-grey'>忘记密码</view>
+    </view>
+    <view class="padding-sm">
+      <button class='cu-btn block bg-blue margin-tb-sm lg' form-type="submit">
+        <text class='iconfont-spin'></text> 登录</button>
+    </view>
+  </view>
+</form>

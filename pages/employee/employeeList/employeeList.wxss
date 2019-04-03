@@ -1,0 +1,90 @@
+/* pages/employeeList/employeeList.wxss */
+
+.VerticalNav.nav {
+  width: 200rpx;
+  white-space: initial;
+  padding-top: 30rpx;
+}
+
+.VerticalNav.nav .cu-item {
+  width: 100%;
+  text-align: center;
+  background-color: #fff;
+  margin: 0;
+  border: none;
+  height: 50px;
+  position: relative;
+}
+
+.VerticalNav.nav .cu-item.cur {
+  background-color: #f1f1f1;
+}
+.VerticalNav.nav .cu-item.cur::after {
+  content: "";
+  width: 8rpx;
+  height: 30rpx;
+  border-radius: 10rpx 0 0 10rpx;
+  position: absolute;
+  background-color: currentColor;
+  top: 0;
+  right: 0rpx;
+  bottom: 0;
+  margin: auto;
+}
+.VerticalBox{
+  display: flex;
+}
+.VerticalMain{
+  background-color: #f1f1f1;
+    padding-bottom: 30rpx;
+}
+
+
+.cu-item{
+  font-size: 14px
+}
+
+.weui-cells:before {
+  border-top: 0;
+}
+
+.weui-navbar__item.weui-bar__item_on {
+  color: #0081ff;
+}
+
+.weui-navbar__slider {
+  background-color: #0081ff;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  font-size: 14px;
+}
+
+.weui-btn{
+  background-color:#0081ff;
+  color:#fff
+}
+
+radio .wx-radio-input{
+    border-radius:50%;
+    width:20px;height:20px;
+}
+radio .wx-radio-input.wx-radio-input-checked{
+    border-color:#fff !important;
+    background:#0081ff !important;
+}
+radio .wx-radio-input.wx-radio-input-checked::before{
+    border-radius:50%;
+    width:20px;
+    height:20px;
+    line-height:20px;
+    text-align:center;
+    font-size:15px;
+    color:#fff;
+    background:transparent;
+    transform:translate(-50%, -50%) scale(1);
+    -webkit-transform:translate(-50%, -50%) scale(1);
+}

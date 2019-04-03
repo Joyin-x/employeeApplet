@@ -1,0 +1,19 @@
+/* pages/noticeDetail/noticeDetail.wxss */
+.weui-article__h3,.weui-article__h1{
+	text-align: center;
+}
+
+.weui-article__p{
+	text-indent: 2em;
+	font-size:18px;
+}
+.weui-article__footer{
+	text-align: right;
+}
+.main-content{
+  padding: 0 30rpx 0;
+  overflow: hidden;
+  font-size: 30rpx;
+  margin-bottom: 20rpx;
+  text-indent:2em
+}

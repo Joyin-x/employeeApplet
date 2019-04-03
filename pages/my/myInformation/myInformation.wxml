@@ -1,0 +1,420 @@
+<!--pages/my/myInformation/myInformation.wxml-->
+<view class="cu-custom" style="height:{{CustomBar}}px;">
+  <view class="cu-bar fixed bg-gradual-blue" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+    <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
+      <text class='icon-back'></text>
+      <view class='content' style='top:{{StatusBar}}px;'>
+        <view wx:if="{{flag==0}}">我的信息
+        </view>
+        <view wx:elif="{{flag==1}}">我的工作调动</view>
+        <view wx:elif="{{flag==2}}">我的加班申请</view>
+        <view wx:elif="{{flag==3}}">我的证书</view>
+        <view wx:elif="{{flag==4}}">我的任务</view>
+        <view wx:elif="{{flag==5}}">退出</view>
+      </view>
+    </navigator>
+  </view>
+</view>
+<!-- 我的信息 -->
+<view wx:if="{{flag==0}}">
+  <view class="cu-list menu margin-top">
+    <view class="cu-item arrow" bindtap="updateInfo" data-id="1">
+      <view class='content center'>
+        <view class='text-black text-xl'>
+          头像
+        </view>
+      </view>
+      <view class='action text-xl' catchtap="watchBImg">
+        <view class="cu-avatar round lg" style="background-image:url({{userInfo.picture}});"></view>
+      </view>
+    </view>
+    <view class="cu-item" bindtap="updateInfo">
+      <view class='content center'>
+        <view class='text-black text-xl'>
+          姓名
+        </view>
+      </view>
+      <view class='action text-sm'>
+        <view class='text-grey'>{{userInfo.name}}</view>
+      </view>
+    </view>
+    <view class="cu-item" bindtap="updateInfo">
+      <view class='content center'>
+        <view class='text-black text-xl'>
+          职务
+        </view>
+      </view>
+      <view class='action text-sm'>
+        <view class='text-grey'>{{userInfo.position}}</view>
+      </view>
+    </view>
+    <view class="cu-item" bindtap="updateInfo">
+      <view class='content center'>
+        <view class='text-black text-xl'>
+          部门
+        </view>
+      </view>
+      <view class='action text-sm'>
+        <view class='text-grey'>{{userInfo.department_name}}</view>
+      </view>
+    </view>
+    <view class="cu-item arrow" bindtap="updateInfo" data-id="2">
+      <view class='content center'>
+        <view class='text-black text-xl'>
+          电话
+        </view>
+      </view>
+      <view class='action text-sm'>
+        <view class='text-grey'>{{userInfo.phone}}</view>
+      </view>
+    </view>
+    <view class="cu-item arrow" bindtap="updateInfo" data-id="3">
+      <view class='content center'>
+        <view class='text-black text-xl'>
+          性别
+        </view>
+      </view>
+      <view class='action text-sm'>
+        <view class='text-grey'>
+          <picker bindchange="sexChange" value="{{index}}" range="{{sex}}">
+            <view class="picker text-grey">
+              {{userInfo.sex==0?"男":"女"}}
+            </view>
+          </picker>
+        </view>
+      </view>
+    </view>
+    <view class="cu-item arrow" bindtap="updateInfo" data-id="4">
+      <view class='content center'>
+        <view class='text-black text-xl'>
+          生日
+        </view>
+      </view>
+      <view class='action text-sm'>
+        <picker mode="date" value="{{userInfo.birthday}}" end="{{endData}}" bindchange="dateChange">
+          <view class="picker text-grey">
+            {{userInfo.birthday}}
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view class="cu-item arrow" bindtap="updateInfo" data-id="5">
+      <view class='content center'>
+        <view class='text-black text-xl'>
+          地址
+        </view>
+      </view>
+      <view class='action text-sm'>
+        <view class='text-grey'>{{userInfo.address}}</view>
+      </view>
+    </view>
+    <view class="cu-item arrow" bindtap="updateInfo" data-id="6">
+      <view class='content center'>
+        <view class='text-black text-xl'>
+          毕业学校
+        </view>
+      </view>
+      <view class='action text-sm'>
+        <view class='text-grey'>{{userInfo.school}}</view>
+      </view>
+    </view>
+    <view class="cu-item arrow" bindtap="updateInfo" data-id="7">
+      <view class='content center'>
+        <view class='text-black text-xl'>
+          所学专业
+        </view>
+      </view>
+      <view class='action text-sm'>
+        <view class='text-grey'>{{userInfo.professional}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 工作调动 -->
+<view wx:elif="{{flag==1}}">
+  <view class="cu-list menu sm-border card-menu margin-top" wx:for="{{info}}" wx:key>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-my text-blue'></text>
+        <text class='text-blue'>姓名：</text>
+        <text class='text-black'>{{userInfo.name}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-vipcard text-cyan'></text>
+        <text class='text-cyan'>原职务：</text>
+        <text class='text-black'>{{item.original_position}}</text>
+      </view>
+      <view class="cu-item">
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-group text-orange'></text>
+        <text class='text-orange'>原部门：</text>
+        <text class='text-black'>{{item.original_department_id}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-question text-mauve'></text>
+        <text class='text-mauve'>现职务：</text>
+        <text class='text-black'>{{item.now_position}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-time text-brown'></text>
+        <text class='text-brown'>现部门：</text>
+        <text class='text-black'>{{userInfo.department_name}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-time text-brown'></text>
+        <text class='text-brown'>调动日期：</text>
+        <text class='text-black'>{{item.transfer_date}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class="cu-form-group top">
+        <text class='icon-group text-mauve' style="font-size:30rpx;margin:0 10rpx"></text>
+        <text class='text-mauve' style="font-size:30rpx;">原因：</text>
+        <textarea class='text-black'>{{item.transfer_reason}}</textarea>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-profile text-pink'></text>
+        <text class='text-pink'>操作人：</text>
+        <text class='text-black'>{{item.approve||"无"}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-time text-brown'></text>
+        <text class='text-brown'>备注信息：</text>
+        <text class='text-black'>{{item.approver}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='padding text-center' wx:if="{{info==null}}">
+    <view class='padding-lr bg-white'>
+      <view class='solid-bottom padding'>
+        <text class='text-gray'>暂无记录</text>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 我的加班 -->
+<view wx:elif="{{flag==2}}">
+  <view class="cu-list menu sm-border card-menu margin-top" wx:for="{{info}}" wx:key>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-my text-blue'></text>
+        <text class='text-blue'>姓名：</text>
+        <text class='text-black'>{{userInfo.name}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-vipcard text-cyan'></text>
+        <text class='text-cyan'>部门：</text>
+        <text class='text-black'>{{userInfo.department_name}}</text>
+      </view>
+      <view class="cu-item">
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-group text-orange'></text>
+        <text class='text-orange'>职务：</text>
+        <text class='text-black'>{{userInfo.position}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class="cu-form-group top">
+        <text class='icon-group text-mauve' style="font-size:30rpx;margin:0 10rpx"></text>
+        <text class='text-mauve' style="font-size:30rpx;">原因：</text>
+        <textarea class='text-black'>{{item.overtime_reason}}</textarea>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-time text-brown'></text>
+        <text class='text-brown'>开始时间：</text>
+        <text class='text-black'>{{item.startTime}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-time text-brown'></text>
+        <text class='text-brown'>结束时间：</text>
+        <text class='text-black'>{{item.endTime}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='padding text-center' wx:if="{{info==null}}">
+    <view class='padding-lr bg-white'>
+      <view class='solid-bottom padding'>
+        <text class='text-gray'>暂无记录</text>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 我的证书 -->
+<view wx:elif="{{flag==3}}"></view>
+<!-- 我的任务 -->
+<view wx:elif="{{flag==4}}">
+  <scroll-view scroll-x class="bg-white nav text-center">
+    <view class="cu-item {{index==TabCur?'text-blue cur':''}}" wx:for="{{navs}}" wx:key bindtap='tabSelect' data-id="{{index}}">
+      {{navs[index]}}
+    </view>
+  </scroll-view>
+  <view wx:if="{{TabCur==0}}">
+    <view class="cu-list menu sm-border card-menu margin-top" wx:for="{{info}}" wx:key wx:if="{{item.status==true}}">
+      <view class="cu-item">
+        <view class='content'>
+          <text class='icon-my text-blue'></text>
+          <text class='text-blue'>姓名：</text>
+          <text class='text-black'>{{userInfo.name}}</text>
+        </view>
+      </view>
+      <view class="cu-item">
+        <view class='content'>
+          <text class='icon-vipcard text-cyan'></text>
+          <text class='text-cyan'>职务：</text>
+          <text class='text-black'>{{userInfo.position}}</text>
+        </view>
+        <view class="cu-item">
+        </view>
+      </view>
+      <view class="cu-item">
+        <view class='content'>
+          <text class='icon-group text-orange'></text>
+          <text class='text-orange'>部门：</text>
+          <text class='text-black'>{{userInfo.department_name}}</text>
+        </view>
+      </view>
+      <view class="cu-item">
+        <view class="cu-form-group top">
+          <text class='icon-group text-mauve' style="font-size:30rpx;margin:0 10rpx"></text>
+          <text class='text-mauve' style="font-size:30rpx;">任务：</text>
+          <textarea class='text-black'>{{item.work_content}}</textarea>
+        </view>
+      </view>
+      <view class="cu-item">
+        <view class='content'>
+          <text class='icon-time text-brown'></text>
+          <text class='text-brown'>开始时间：</text>
+          <text class='text-black'>{{item.start_time}}</text>
+        </view>
+      </view>
+      <view class="cu-item">
+        <view class='content'>
+          <text class='icon-time text-brown'></text>
+          <text class='text-brown'>结束时间：</text>
+          <text class='text-black'>{{item.end_time}}</text>
+        </view>
+      </view>
+    </view>
+    <view class='padding text-center' wx:if="{{do==0}}">
+      <view class='padding-lr bg-white'>
+        <view class='solid-bottom padding'>
+          <text class='text-gray'>暂无记录</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{TabCur==1}}">
+    <view class="cu-list menu sm-border card-menu margin-top" wx:for="{{info}}" wx:key wx:if="{{item.status==false}}">
+      <view class="cu-item">
+        <view class='content'>
+          <text class='icon-my text-blue'></text>
+          <text class='text-blue'>姓名：</text>
+          <text class='text-black'>{{userInfo.name}}</text>
+        </view>
+      </view>
+      <view class="cu-item">
+        <view class='content'>
+          <text class='icon-vipcard text-cyan'></text>
+          <text class='text-cyan'>职务：</text>
+          <text class='text-black'>{{userInfo.position}}</text>
+        </view>
+        <view class="cu-item">
+        </view>
+      </view>
+      <view class="cu-item">
+        <view class='content'>
+          <text class='icon-group text-orange'></text>
+          <text class='text-orange'>部门：</text>
+          <text class='text-black'>{{userInfo.department_name}}</text>
+        </view>
+      </view>
+      <view class="cu-item">
+        <view class="cu-form-group top">
+          <text class='icon-group text-mauve' style="font-size:30rpx;margin:0 10rpx"></text>
+          <text class='text-mauve' style="font-size:30rpx;">任务：</text>
+          <textarea class='text-black'>{{item.work_content}}</textarea>
+        </view>
+      </view>
+      <view class="cu-item">
+        <view class='content'>
+          <text class='icon-time text-brown'></text>
+          <text class='text-brown'>开始时间：</text>
+          <text class='text-black'>{{item.start_time}}</text>
+        </view>
+      </view>
+      <view class="cu-item">
+        <view class='content'>
+          <text class='icon-time text-brown'></text>
+          <text class='text-brown'>结束时间：</text>
+          <text class='text-black'>{{item.end_time}}</text>
+        </view>
+      </view>
+      <view class="cu-item">
+        <view class='content'>
+          <view class="cu-bar bg-white solid-bottom">
+            <view class='action'>
+              <text class='icon-repair text-orange'></text> 操作
+            </view>
+            <view class='action'>
+              <button class='cu-btn bg-blue shadow' data-id="{{item.id}}" catchtap='agree'>设置已完成</button>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='padding text-center' wx:if="{{notDo==0}}">
+      <view class='padding-lr bg-white'>
+        <view class='solid-bottom padding'>
+          <text class='text-gray'>暂无记录</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="cu-modal {{isShow?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class='content' wx:if="{{idx==2}}">修改手机号码</view>
+      <view class='content' wx:elif="{{idx==5}}">修改地址</view>
+      <view class='content' wx:elif="{{idx==6}}">修改毕业学校</view>
+      <view class='content' wx:elif="{{idx==7}}">修改所学专业</view>
+    </view>
+    <view style="margin:1em .5em">
+      <input wx:if="{{idx==2}}" placeholder="输入修改后的手机号码" class='radius bg-white' bindinput='getValue' value="{{userInfo.phone}}"></input>
+      <input wx:elif="{{idx==5}}" value="{{userInfo.address}}" placeholder="输入修改后的地址" class='radius bg-white' bindinput='getValue'></input>
+      <input wx:elif="{{idx==6}}" placeholder="输入修改后的毕业学校" class='radius bg-white' bindinput='getValue' value="{{userInfo.school}}"></input>
+      <input wx:elif="{{idx==7}}" placeholder="输入修改后的专业" class='radius bg-white' bindinput='getValue' value="{{userInfo.professional}}"></input>
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class='action'>
+        <button class='cu-btn text-grey' bindtap='hideModal'>取消</button>
+        <button class='cu-btn bg-blue margin-left' bindtap='confirm'>确定</button>
+      </view>
+    </view>
+  </view>
+</view>

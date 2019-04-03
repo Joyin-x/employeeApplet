@@ -1,0 +1,8 @@
+/* pages/work/overTimeAction/overTimeAction.wxss */
+.jiange{
+  margin-right: 10rpx;
+}
+
+.cu-bar .action:last-child {
+  margin-right:230rpx;
+}

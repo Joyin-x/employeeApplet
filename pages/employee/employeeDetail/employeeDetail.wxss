@@ -1,0 +1,14 @@
+/* pages/employeeDetail/employeeDetail.wxss */
+
+.weui-cells:before {
+    margin-top: 0;
+    border-top: 0;
+}
+
+.btn{
+	margin-top:10px
+}
+
+.weui-label{
+	width:70px
+}

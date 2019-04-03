@@ -1,0 +1,188 @@
+<!--pages/employeeList/employeeList.wxml-->
+<view class="cu-custom" style="height:{{CustomBar}}px;">
+  <view class="cu-bar fixed bg-gradual-blue" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+    <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
+      <text class='icon-back'></text> 员工管理
+    </navigator>
+  </view>
+</view>
+
+<view class="page">
+  <view class="weui-tab">
+    <view class="weui-navbar">
+      <block wx:for="{{tabs}}" wx:key="*this">
+        <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+          <view class="weui-navbar__title">{{item}}</view>
+        </view>
+      </block>
+      <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+    </view>
+    <view class="weui-tab__panel">
+      <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+        <view class="VerticalBox">
+          <scroll-view class="VerticalNav nav" scroll-y scroll-with-animation scroll-top="{{VerticalNavTop}}" style="height:calc(100vh - 375rpx)">
+            <view class="cu-item {{index==TabCur?'text-blue cur':''}}" wx:for="{{list}}" wx:key bindtap='tabSelect' data-id="{{index}}">
+              {{item.departmentName}}
+            </view>
+          </scroll-view>
+          <scroll-view class="VerticalMain" scroll-y scroll-with-animation style="height:100vh" scroll-into-view="main-id-{{TabCur}}">
+            <view class="padding-top padding-lr" wx:for="{{list}}" wx:for-item="department" wx:key id="main-id-{{index}}">
+              <view class='cu-bar solid-bottom bg-white'>
+                <view class='action'>
+                  <text class='icon-title text-blue'></text> {{department.departmentName}}</view>
+              </view>
+              <view class="cu-list menu">
+                <view class="cu-item arrow" wx:for="{{department.employeeList}}"  wx:key="*this" bindtap="toEmployeeDetail" data-id="{{item.id}}">
+                  <view class='content'>
+                    <view>{{item.name}}</view>
+                    <view class='text-gray text-sm'>
+                      <text class='text-red'></text>{{item.position}}</view>
+                  </view>
+                  <view class='action'>
+                    <view class='text-grey'>详细信息</view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </scroll-view>
+        </view>
+      </view>
+      <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+        <form bindsubmit="formSubmit" enctype="multipart/form-data">
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                <view class="weui-label">姓名</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input name="name" class="weui-input" placeholder="请输入入职员工姓名" />
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                <view class="weui-label">性别</view>
+              </view>
+              <view class="weui-cell__bd">
+                <!-- 单选按钮 男女 -->
+                <radio-group name="sex" class="radio-group" bindchange="sexChange">
+                  <label class="weui-input" wx:for="{{sex}}" wx:key="*this">
+                    <radio value="{{item.name}}" checked="{{item.checked}}" /> {{item.value}}
+                  </label>
+                </radio-group>
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                <view class="weui-label">出生日期</view>
+              </view>
+              <view class="weui-cell__bd">
+                <picker name="birthday" mode="date" value="{{date}}"  bindchange="bindDateChange">
+                  <view class="weui-input">{{date}}</view>
+                </picker>
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                <view class="weui-label">籍贯</view>
+              </view>
+              <view class="weui-cell__bd">
+                <picker name="native_place" mode="region" value="{{region}}" bindchange="bindRegionChange">
+                  <view class="weui-input">{{region}}</view>
+                </picker>
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                <view class="weui-label">地址</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input name="address" class="weui-input" placeholder="请输入地址" />
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                <view class="weui-label">联系电话</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input name="phone" class="weui-input" placeholder="请输入联系电话" />
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                <view class="weui-label">所属部门</view>
+              </view>
+              <view class="weui-cell__bd">
+                <picker name="department_id" bindchange="bindDepartmentChange" value="{{departmentIndex}}" range="{{department}}" range-key="{{'name'}}">
+                  <view class="weui-input">{{department[departmentIndex].name}}</view>
+                </picker>
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                <view class="weui-label">职务</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input name="position" class="weui-input" placeholder="请输入职务" />
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                <view class="weui-label">权限等级</view>
+              </view>
+              <view class="weui-cell__bd">
+                <picker name="grade" bindchange="bindGradeChange" value="{{gradeIndex}}" range="{{grade}}" range-key="{{'name'}}">
+                  <view class="weui-input">{{grade[gradeIndex].name}}</view>
+                </picker>
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                <view class="weui-label">学历</view>
+              </view>
+              <view class="weui-cell__bd">
+                <picker name="education" bindchange="bindPickerChange" value="{{array[index]}}" range="{{array}}">
+                  <view class="weui-input">{{array[index]}}</view>
+                </picker>
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                <view class="weui-label">毕业学校</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input name="school" class="weui-input" placeholder="请输入毕业学校" />
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                <view class="weui-label">专业</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input name="professional" class="weui-input" placeholder="请输入所学专业" />
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                <view class="weui-label">邮箱</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input name="email" class="weui-input" placeholder="请输入邮箱" />
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                <view class="weui-label">备注信息</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input name="remark" class="weui-input" name="remark" placeholder="请输入备注信息" />
+              </view>
+            </view>
+          </view>
+          <view class="weui-btn-area">
+            <button class="weui-btn" form-type="submit">确定</button>
+          </view>
+        </form>
+      </view>
+    </view>
+  </view>
+</view>

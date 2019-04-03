@@ -1,0 +1,64 @@
+<!--pages/my/my.wxml-->
+<view class="cu-custom" style="height:{{CustomBar}}px;">
+  <view class="cu-bar fixed bg-gradual-purple" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+    <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
+      <view class='content' style='top:{{StatusBar}}px;'>个人中心</view>
+    </navigator>
+  </view>
+</view>
+<view class="user-top">
+  <view bindtap='checkLogin'>
+    <image style="width:100%;height:200px;" src="https://weixiong.info/image/background.jpg"></image>
+    <view class="user-head" catchtap="watchBImg">
+      <image wx:if="{{userInfo!=''}}" src="{{userInfo.picture}}"></image>
+      <image wx:else src="https://weixiong.info/image/login.jpg"></image>
+      <view wx:if="{{userInfo!=''}}">{{userInfo.name}}</view>
+      <view wx:else>登录</view>
+    </view>
+  </view>
+</view>
+<view class="cu-list menu {{menuBorder?'sm-border':''}} {{menuCard?'card-menu margin-top':''}}">
+  <view class="cu-item arrow" bindtap='doAction' data-flag="0">
+    <view class='content'>
+      <text class='icon-my text-orange'></text>
+      <text class='text-grey'>我的信息</text>
+    </view>
+  </view>
+  <view class="cu-item arrow" bindtap='doAction' data-flag="1">
+    <view class='content'>
+      <text class='icon-news text-green'></text>
+      <text class='text-grey'>我的工作调动</text>
+    </view>
+  </view>
+  <view class="cu-item arrow" bindtap='doAction' data-flag="2">
+    <view class='content'>
+      <text class='icon-calendar  text-yellow'></text>
+      <text class='text-grey'>我的加班</text>
+    </view>
+  </view>
+  <view class="cu-item arrow" bindtap='doAction' data-flag="3">
+    <view class='content'>
+      <text class='icon-recharge text-blue'></text>
+      <text class='text-grey'>我的工资</text>
+    </view>
+  </view>
+  <view class="cu-item arrow" bindtap='doAction' data-flag="4">
+    <view class='content'>
+      <text class='icon-sort text-mauve'></text>
+      <text class='text-grey'>我的任务</text>
+    </view>
+  </view>
+  <view class="cu-item arrow" bindtap='doAction' data-flag="5">
+    <view class='content'>
+      <text class='icon-lock text-mauve'></text>
+      <text class='text-grey'>密码修改</text>
+    </view>
+  </view>
+  <view class="cu-item arrow" bindtap='doAction' data-flag="6">
+    <view class='content'>
+      <text class='icon-exit text-red'></text>
+      <text class='text-grey'>退出</text>
+    </view>
+  </view>
+</view>
+

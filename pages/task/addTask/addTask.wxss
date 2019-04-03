@@ -1,0 +1,9 @@
+/* pages/addTask/addTask.wxss */
+.weui-label{
+	margin-left:0
+}
+
+.weui-btn{
+  background-color:#00c8fa;
+  color:#fff
+}

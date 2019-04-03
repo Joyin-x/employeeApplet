@@ -1,0 +1,14 @@
+<!--工作调动记录页-->
+<view class="cu-custom" style="height:{{CustomBar}}px;">
+  <view class="cu-bar fixed bg-gradual-blue" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+    <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
+      <text class='icon-back'></text> 调动记录
+    </navigator>
+  </view>
+</view>
+<view class="weui-cells weui-cells_after-title">
+    <navigator url="/pages/jobTransfer/jobTransferList/jobTransferList?id={{item.employee_id}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:for="{{mobilizeList}}" wx:key>
+      <view class="weui-cell__bd">{{item.name}}</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access">{{item.count}}条记录</view>
+    </navigator>
+</view>

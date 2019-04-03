@@ -1,0 +1,75 @@
+<!--pages/jobTransfer/jobTransfer.wxml-->
+<view class="cu-custom" style="height:{{CustomBar}}px;">
+  <view class="cu-bar fixed bg-gradual-blue" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+    <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
+      <text class='icon-back'></text> 工作调动
+    </navigator>
+  </view>
+</view>
+<view class="weui-tab__content">
+    <form bindsubmit="formSubmit" enctype="multipart/form-data">
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">姓名</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input text-grey" disabled value="{{name}}" />
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">现属部门</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input text-grey" disabled value="{{departmentName}}" />
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">现职务</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input text-grey" disabled value="{{position}}" />
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">调动后部门</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <picker name="department_id" bindchange="bindDepartmentChange" value="{{departmentIndex}}" range="{{list}}" range-key="{{'name'}}">
+                        <view class="weui-input">{{list[departmentIndex].name}}</view>
+                    </picker>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">调动后职务</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input name="position" class="weui-input" />
+                </view>
+            </view>
+			 <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">调动原因</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" name="transferReason"/>
+                </view>
+            </view>
+			 <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">备注信息</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" name="mobilizeRemark"/>
+                </view>
+            </view>
+        </view>
+        <view class="weui-btn-area">
+            <button class="weui-btn" form-type="submit">确定</button>
+        </view>
+    </form>
+</view>

@@ -1,0 +1,10 @@
+/* pages/departmentAction/departmentAction.wxss */
+
+
+.weui-cells {
+	margin-top:0
+}
+.weui-btn{
+  background-color:#00c8fa;
+  color:#fff;
+}

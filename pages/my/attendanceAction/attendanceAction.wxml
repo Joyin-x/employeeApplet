@@ -1,0 +1,150 @@
+<!--pages/my/attendanceAction/attendanceAction.wxml-->
+<view class="cu-custom" style="height:{{CustomBar}}px;">
+  <view class="cu-bar fixed bg-gradual-red" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+    <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
+      <text class='icon-back'></text>
+      <view wx:if="{{flag==0}}">日常打卡
+      </view>
+      <view wx:elif="{{flag==1}}">打卡记录
+      </view>
+      <view wx:else>今日排行
+      </view>
+    </navigator>
+  </view>
+</view>
+<view wx:if="{{flag==0}}">
+  <view class="bg-img bg-mask padding-tb-xl" style="background-image: url('https://weixiong.info/image/attendance/1.jpg')">
+    <view class='padding-xl text-white'>
+      <view class='padding-xs text-xl'>
+        留点时间去看大海
+      </view>
+      <view class='padding-xs'>
+        Make time to see the sea
+      </view>
+    </view>
+  </view>
+  <view class="padding flex flex-direction">
+    <button class='cu-btn block line-orange lg' bindtap='addStart'>
+      <text class='icon-triangleupfill'></text> 上班</button>
+    <button class='cu-btn block line-orange lg margin-tb-sm' bindtap='addEnd'>
+      <text class='icon-triangledownfill'></text> 下班</button>
+  </view>
+</view>
+<view wx:if="{{flag==1}}">
+  <view class="cu-list menu sm-border card-menu margin-top">
+    <view class="cu-item">
+      <view class='content'>
+        <picker bindchange="bindPickerChange" value="{{departmentList[index].idx}}" range="{{departmentList}}" range-key="{{'departmentName'}}">
+          <view class="picker">
+            按部门查看：{{departmentList[index].departmentName}}
+          </view>
+        </picker>
+      </view>
+    </view>
+  </view>
+  <view class="cu-list menu sm-border card-menu margin-top" wx:for="{{attendanceList}}" wx:key="this">
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-my text-blue'></text>
+        <text class='text-blue'>姓名：</text>
+        <text class='text-black'>{{item.name}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-vipcard text-cyan'></text>
+        <text class='text-cyan'>职务：</text>
+        <text class='text-black'>{{item.position}}</text>
+      </view>
+      <view class="cu-item">
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-group text-orange'></text>
+        <text class='text-orange'>部门：</text>
+        <text class='text-black'>{{item.department_name}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-time text-brown'></text>
+        <text class='text-brown'>上班时间：</text>
+        <text class='text-black'>{{item.office_time||"未打卡"}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-time text-brown'></text>
+        <text class='text-brown'>下班时间：</text>
+        <text class='text-black'>{{item.after_work||"未打卡"}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-location text-mauve'></text>
+        <text class='text-mauve'>地点：</text>
+        <text class='text-black'>{{item.location}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='padding text-center' wx:if="{{attendanceList==null}}">
+    <view class='padding-lr bg-white'>
+      <view class='solid-bottom padding'>
+        <text class='text-gray'>暂无记录</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{flag==2}}">
+  <view class="cu-list menu sm-border card-menu margin-top" wx:for="{{rankList}}" wx:key="this">
+    <view class="padding-xs" style="position:relative;top:20px;z-index:999;">
+      <view class='cu-tag bg-cyan' style="border-radius:15rpx;">{{index+1}}</view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-my text-blue'></text>
+        <text class='text-blue'>姓名：</text>
+        <text class='text-black'>{{item.name}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-vipcard text-cyan'></text>
+        <text class='text-cyan'>职务：</text>
+        <text class='text-black'>{{item.position}}</text>
+      </view>
+      <view class="cu-item">
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-group text-orange'></text>
+        <text class='text-orange'>部门：</text>
+        <text class='text-black'>{{item.department_name}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-time text-brown'></text>
+        <text class='text-brown'>上班时间：</text>
+        <text class='text-black'>{{item.office_time||"未打卡"}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-time text-brown'></text>
+        <text class='text-brown'>下班时间：</text>
+        <text class='text-black'>{{item.after_work||"未打卡"}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-location text-mauve'></text>
+        <text class='text-mauve'>地点：</text>
+        <text class='text-black'>{{item.location}}</text>
+      </view>
+    </view>
+  </view>
+</view>

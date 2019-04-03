@@ -1,10 +1,11 @@
 /**app.wxss**/
 @import 'utils/weui.wxss';
-
+@import "utils/icon.wxss";
+@import "utils/colorui.wxss";
 
 page{
     background-color: #F8F8F8;
-    font-size: 16px;
+    font-size: 18px;
     font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
 }
 .page__hd {
@@ -44,3 +45,149 @@ page{
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+
+
+/* 阿里图标 */
+@font-face {
+  font-family: 'iconfont';  /* project id 781957 */
+  src: url('//at.alicdn.com/t/font_781957_rqqs6p3m3n.eot');
+  src: url('//at.alicdn.com/t/font_781957_rqqs6p3m3n.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_781957_rqqs6p3m3n.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_781957_rqqs6p3m3n.woff') format('woff'),
+  url('//at.alicdn.com/t/font_781957_rqqs6p3m3n.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_781957_rqqs6p3m3n.svg#iconfont') format('svg');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color:#00c8fa;
+}
+
+.icon-hanbao:before {
+  content: "\e600";
+}
+
+.icon-tianmaotigongfapiao:before {
+  content: "\e605";
+}
+
+.icon-goumai:before {
+  content: "\e601";
+}
+
+.icon-gongnengjianyi:before {
+  content: "\e602";
+}
+
+.icon-31dianpu:before {
+  content: "\e603";
+}
+
+.icon-31huiyuanqia:before {
+  content: "\e604";
+}
+
+.icon-icon-test:before {
+  content: "\e617";
+}
+
+.icon-icon-test1:before {
+  content: "\e618";
+}
+
+.icon-icon-test2:before {
+  content: "\e619";
+}
+
+.icon-icon-test3:before {
+  content: "\e61a";
+}
+
+.icon-icon-test4:before {
+  content: "\e61b";
+}
+
+.icon-icon-test5:before {
+  content: "\e61c";
+}
+
+.icon-icon-test6:before {
+  content: "\e61d";
+}
+
+.icon-icon-test7:before {
+  content: "\e61e";
+}
+
+.icon-icon-test8:before {
+  content: "\e61f";
+}
+
+.icon-icon-test9:before {
+  content: "\e620";
+}
+
+.icon-icon-test10:before {
+  content: "\e621";
+}
+
+.icon-icon-test11:before {
+  content: "\e622";
+}
+
+.icon-icon-test12:before {
+  content: "\e623";
+}
+
+.icon-icon-test13:before {
+  content: "\e624";
+}
+
+.icon-icon-test14:before {
+  content: "\e625";
+}
+
+.icon-icon-test15:before {
+  content: "\e626";
+}
+
+.icon-icon-test16:before {
+  content: "\e627";
+}
+
+.icon-icon-test17:before {
+  content: "\e628";
+}
+
+.icon-icon-test18:before {
+  content: "\e629";
+}
+
+.icon-icon-test19:before {
+  content: "\e62a";
+}
+
+.icon-icon-test20:before {
+  content: "\e62b";
+}
+
+.icon-icon-test21:before {
+  content: "\e62c";
+}
+
+.icon-icon-test22:before {
+  content: "\e62d";
+}
+
+.icon-icon-test23:before {
+  content: "\e62e";
+}
+
+.icon-icon-test24:before {
+  content: "\e62f";
+}
+

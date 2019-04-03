@@ -1,0 +1,234 @@
+<!--pages/work/overTimeAction/overTimeAction.wxml-->
+<view class="cu-custom" style="height:{{CustomBar}}px;">
+  <view class="cu-bar fixed bg-gradual-pink" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+    <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
+      <text class='icon-back'></text>
+      <view wx:if="{{id==0}}">加班记录
+      </view>
+      <view wx:elif="{{id==1}}">加班申请
+      </view>
+      <view wx:else>加班审批
+      </view>
+    </navigator>
+  </view>
+</view>
+
+<view wx:if="{{id==0}}">
+  <view class="cu-list menu sm-border card-menu margin-top">
+    <view class="cu-item">
+      <view class='content'>
+        <picker bindchange="bindPickerChange" value="{{departmentList[index].idx}}" range="{{departmentList}}" range-key="{{'departmentName'}}">
+          <view class="picker">
+            按部门查看：{{departmentList[index].departmentName}}
+          </view>
+        </picker>
+      </view>
+    </view>
+  </view>
+  <view class="cu-list menu sm-border card-menu margin-top" wx:for="{{overtimeList}}" wx:key>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-my text-blue'></text>
+        <text class='text-blue'>姓名：</text>
+        <text class='text-black'>{{item.name}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-vipcard text-cyan'></text>
+        <text class='text-cyan'>职务：</text>
+        <text class='text-black'>{{item.position}}</text>
+      </view>
+      <view class="cu-item">
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-group text-orange'></text>
+        <text class='text-orange'>部门：</text>
+        <text class='text-black'>{{item.department_name}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class="cu-form-group top" style="padding:0">
+        <text class='icon-question text-mauve' style="font-size:30rpx;margin:0 10rpx"></text>
+        <text class='text-mauve' style="font-size:30rpx;">加班原因：</text>
+        <textarea class='text-black'>{{item.overtime_reason}}</textarea>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-time text-brown'></text>
+        <text class='text-brown'>开始时间：</text>
+        <text class='text-black'>{{item.startTime}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-time text-brown'></text>
+        <text class='text-brown'>截止时间：</text>
+        <text class='text-black'>{{item.endTime}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-profile text-pink'></text>
+        <text class='text-pink'>审批人：</text>
+        <text class='text-black'>{{item.approve||"未审批"}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-info text-purple'></text>
+        <text class='text-purple'>审批状态：</text>
+        <text class='text-black' wx:if="{{item.status==1}}">同意</text>
+        <text class='text-black' wx:elif="{{item.status==0}}">驳回</text>
+        <text class='text-black' wx:else>待审批</text>
+      </view>
+    </view>
+  </view>
+  <view class='padding text-center' wx:if="{{overtimeList==null}}">
+    <view class='padding-lr bg-white'>
+      <view class='solid-bottom padding'>
+        <text class='text-gray'>暂无记录</text>
+      </view>
+    </view>
+  </view>
+</view>
+<view wx:elif="{{id==1}}">
+  <view class="cu-list menu card-menu margin-top">
+    <form bindsubmit="submit" enctype="multipart/form-data">
+      <view class="cu-form-group">
+        <view class='title'>姓名</view>
+        <input class='radius' name='input' value="{{userInfo.name}}" disabled></input>
+      </view>
+      <view class="cu-form-group">
+        <view class='title'>部门</view>
+        <input class='radius' name='input' value="{{userInfo.department_id}}" disabled></input>
+      </view>
+      <view class="cu-form-group">
+        <view class='title'>职位</view>
+        <input class='radius' name='input' value="{{userInfo.position}}" disabled></input>
+      </view>
+      <view class="cu-form-group top">
+        <view class='title'>原因</view>
+        <textarea placeholder="在此输入你的申请理由" maxlength="-1" placeholder-class='placeholder' name="reason"></textarea>
+      </view>
+      <view class="cu-form-group">
+        <view class='title'>开始日期</view>
+        <picker mode="date" value="{{startDate}}" start="1990-1-1" bindchange="startDateChange">
+          <view class="picker left">
+            {{startDate}}
+          </view>
+        </picker>
+      </view>
+      <view class="cu-form-group">
+        <view class='title'>开始时间</view>
+        <picker mode="time" value="{{startTime}}" start="00:00" end="23:59" bindchange="startTimeChange">
+          <view class="picker">
+            {{startTime}}
+          </view>
+        </picker>
+      </view>
+      <view class="cu-form-group">
+        <view class='title'>结束日期</view>
+        <picker mode="date" value="{{endDate}}" start="{{endStartDate}}" bindchange="endDateChange">
+          <view class="picker">
+            {{endDate}}
+          </view>
+        </picker>
+      </view>
+      <view class="cu-form-group">
+        <view class='title'>结束时间</view>
+        <picker mode="time" value="{{endTime}}" start="00:00" end="23:59" bindchange="endTimeChange">
+          <view class="picker">
+            {{endTime}}
+          </view>
+        </picker>
+      </view>
+      <view class="padding-sm">
+        <button class='cu-btn block bg-pink margin-tb-sm lg' form-type="submit">
+          <text class='iconfont-spin'></text> 申请</button>
+      </view>
+    </form>
+  </view>
+</view>
+<view wx:else>
+  <view class="cu-list menu sm-border card-menu margin-top">
+    <view class="cu-item">
+      <view class='content'>
+        <picker bindchange="bindPickerChange" value="{{departmentList[index].idx}}" range="{{departmentList}}" range-key="{{'departmentName'}}">
+          <view class="picker">
+            按部门审批：{{departmentList[index].departmentName}}
+          </view>
+        </picker>
+      </view>
+    </view>
+  </view>
+  <view class="cu-list menu sm-border card-menu margin-top" wx:for="{{overtimeList}}" wx:key="this" wx:if="{{item.approve==''||item.approve==null}}">
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-my text-blue'></text>
+        <text class='text-blue'>姓名：</text>
+        <text class='text-black'>{{item.name}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-vipcard text-cyan'></text>
+        <text class='text-cyan'>职务：</text>
+        <text class='text-black'>{{item.position}}</text>
+      </view>
+      <view class="cu-item">
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-group text-orange'></text>
+        <text class='text-orange'>部门：</text>
+        <text class='text-black'>{{item.department_name}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class="cu-form-group top" style="padding:0">
+        <text class='icon-question text-mauve' style="font-size:30rpx;margin:0 10rpx"></text>
+        <text class='text-mauve' style="font-size:30rpx;">加班原因：</text>
+        <textarea class='text-black'>{{item.overtime_reason}}</textarea>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-time text-brown'></text>
+        <text class='text-brown'>开始时间：</text>
+        <text class='text-black'>{{item.startTime}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-time text-brown'></text>
+        <text class='text-brown'>截止时间：</text>
+        <text class='text-black'>{{item.endTime}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <view class="cu-bar bg-white solid-bottom">
+          <view class='action'>
+            <text class='icon-repair text-orange'></text> 操作
+          </view>
+          <view class='action'>
+            <button class='cu-btn bg-blue shadow jiange' data-id="{{item.overtimeID}}" catchtap='agree'>通过</button>
+            <button class='cu-btn bg-red shadow jiange' data-id="{{item.overtimeID}}" catchtap='oppose'>驳回</button>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='padding text-center'>
+    <view class='padding-lr bg-white' wx:if="{{overtimeList==null}}">
+      <view class='solid-bottom padding'>
+        <text class='text-gray'>暂无申请</text>
+      </view>
+    </view>
+  </view>
+</view>

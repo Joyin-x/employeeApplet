@@ -1,0 +1,17 @@
+/* pages/addNotice/addNotice.wxss */
+
+.weui-btn {
+    background-color: #00c8fa;
+    color: #fff;
+}
+.weui-cell:after{
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 1px;
+    border-top: 1rpx solid #d9d9d9;
+    color: #d9d9d9;
+    left: 15px;
+}

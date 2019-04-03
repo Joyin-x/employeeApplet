@@ -1,0 +1,86 @@
+<!--指派任务页面-->
+<view class="cu-custom" style="height:{{CustomBar}}px;">
+  <view class="cu-bar fixed bg-gradual-blue" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+    <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
+      <text class='icon-back'></text> 任务布置
+    </navigator>
+  </view>
+</view>
+<form bindsubmit="formSubmit" enctype="multipart/form-data">
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">
+          <text decode="true">姓&nbsp;&nbsp;&nbsp;&nbsp;名：</text>
+        </view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input text-grey" disabled value="{{name}}" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">
+          <text decode="true">部&nbsp;&nbsp;&nbsp;&nbsp;门：</text>
+        </view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input text-grey" disabled value="{{departmentName}}" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">
+          <text decode="true">职&nbsp;&nbsp;&nbsp;&nbsp;务：</text>
+        </view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input text-grey" disabled value="{{position}}" />
+      </view>
+    </view>
+    <view style="border-top:1rpx solid #d9d9d9" class="weui-cell__hd">
+      <view class="weui-label" style="margin:10px 0 5px 15px">任务描述</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">
+            <textarea name="taskContent" class="weui-textarea" auto-focus maxlength="-1" placeholder="请输入指派任务内容" />
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">状态：</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker name="status" bindchange="bindStatusChange" value="{{statusIndex}}" range="{{status}}" range-key="{{'name'}}">
+          <view class="weui-input">{{status[statusIndex].name}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">起止时间:</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker name="startDate" mode="date" value="{{startDate}}" start="1991-01-01" bindchange="bindStartDateChange">
+          <view class="weui-input">{{startDate}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">截止时间:</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker name="endDate" mode="date" value="{{endDate}}" start="{{endStartDate}}" bindchange="bindEndDateChange">
+          <view class="weui-input">{{endDate}}</view>
+        </picker>
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-btn-area">
+    <button class="weui-btn" form-type="submit">确定</button>
+  </view>
+</form>

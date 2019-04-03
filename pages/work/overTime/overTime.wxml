@@ -1,0 +1,38 @@
+<!--pages/work/overTime/overTime.wxml-->
+<view class="cu-custom" style="height:{{CustomBar}}px;">
+  <view class="cu-bar fixed bg-gradual-blue" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+    <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
+      <text class='icon-back'></text> 操作选项
+    </navigator>
+  </view>
+</view>
+
+<view class="cu-list menu sm-border card-menu margin-top">
+  <view class="cu-item arrow" bindtap='doAction' data-flag="0">
+    <view class='content'>
+      <text class='icon-sort text-orange'></text>
+      <text class='text-grey'>加班记录</text>
+    </view>
+    <view class='action'>
+      <text class='text-cyan text-sm'>去查看</text>
+    </view>
+  </view>
+  <view class="cu-item arrow" bindtap='doAction' data-flag="1">
+    <view class='content'>
+      <text class='icon-home text-purple'></text>
+      <text class='text-grey'>加班申请</text>
+    </view>
+    <view class='action'>
+      <text class='text-blue text-sm'>我要申请</text>
+    </view>
+  </view>
+  <view class="cu-item arrow" bindtap='doAction' data-flag="2">
+    <view class='content'>
+      <text class='icon-news text-green'></text>
+      <text class='text-grey'>审核</text>
+    </view>
+    <view class='action'>
+      <text class='text-green text-sm'>GO</text>
+    </view>
+  </view>
+</view>

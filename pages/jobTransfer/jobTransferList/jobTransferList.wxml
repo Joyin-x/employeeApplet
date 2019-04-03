@@ -1,0 +1,60 @@
+<!--pages/jobTransferList/jobTransferList.wxml-->
+<view class="cu-custom" style="height:{{CustomBar}}px;">
+  <view class="cu-bar fixed bg-gradual-blue" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+    <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
+      <text class='icon-back'></text> 调动记录
+    </navigator>
+  </view>
+</view>
+
+<view class="cu-card case">
+  <view class="cu-item shadow" wx:for="{{list}}" wx:key>
+    <view class="weui-form-preview cu-list menu menu-avatar">
+      <view class="weui-form-preview__hd" style="color:#0081ff">
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">员工姓名</view>
+          <view class="weui-form-preview__value_in-hd">{{item.name}}</view>
+        </view>
+      </view>
+      <view class="weui-form-preview__bd" style="color:#0081ff">
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">原部门</view>
+          <view class="weui-form-preview__value_in-hd">{{item.originalDepartmentId}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">原职务</view>
+          <view class="weui-form-preview__value_in-hd">{{item.originalPosition}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">调动后部门</view>
+          <view class="weui-form-preview__value_in-hd">{{item.nowDepartmentId}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">调动后职务</view>
+          <view class="weui-form-preview__value_in-hd">{{item.nowPosition}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">调动原因</view>
+          <view class="weui-form-preview__value_in-hd">{{item.transferReason}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">操作人</view>
+          <view class="weui-form-preview__value_in-hd">{{item.approver}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">调动时间</view>
+          <view class="weui-form-preview__value_in-hd">{{item.transferDate}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">备注信息</view>
+          <view class="weui-form-preview__value_in-hd">{{item.mobilizeRemark}}</view>
+        </view>
+      </view>
+      <view class="weui-form-preview__hd" style="color:#0081ff">
+        <view class="weui-form-preview__item">
+          <button class="weui-button" bindtap='deleteMobilize' data-id="{{item.id}}">删除</button>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

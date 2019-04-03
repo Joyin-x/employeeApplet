@@ -1,0 +1,44 @@
+<view class="cu-custom" style="height:{{CustomBar}}px;">
+  <view class="cu-bar fixed bg-gradual-blue" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+    <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
+      <text class='icon-back'></text> 部门管理
+    </navigator>
+  </view>
+</view>
+<view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell" bindtap="departmentAction" data-id="0">
+        <view class="weui-cell__bd">
+            <view>新增部门</view>
+            <view style="font-size: 13px;color: #888888;">设置新开部门信息</view>
+        </view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">进入设置</view>
+    </view>
+    <view class="weui-cell" bindtap="departmentAction" data-id="1">
+        <view class="weui-cell__bd">
+            <view>修改部门</view>
+            <view style="font-size: 13px;color: #888888;">修改部门信息</view>
+        </view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">进入设置</view>
+    </view>
+    <view class="weui-cell" bindtap="departmentAction" data-id="2">
+        <view class="weui-cell__bd">
+            <view>删除部门</view>
+            <view style="font-size: 13px;color: #888888;">删除部门信息，谨慎操作！</view>
+        </view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">进入设置</view>
+    </view>
+    <view class="weui-cell" bindtap="departmentAction" data-id="3">
+        <view class="weui-cell__bd">
+            <view>工作调动</view>
+            <view style="font-size: 13px;color: #888888;">员工工作部门调整</view>
+        </view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">进入设置</view>
+    </view>
+    <view class="weui-cell" bindtap="departmentAction" data-id="4">
+        <view class="weui-cell__bd">
+            <view>任务指派</view>
+            <view style="font-size: 13px;color: #888888;">分派工作任务</view>
+        </view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">进入设置</view>
+    </view>
+</view>

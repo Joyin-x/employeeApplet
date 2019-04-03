@@ -1,0 +1,13 @@
+/* pages/jobTransferList/jobTransferList.wxss */
+.weui-form-preview__value,.weui-form-preview__value_in-hd{
+  text-align: center
+}
+.weui-form-preview__value_in-hd{
+  font-size:16px
+}
+.page{
+  margin-top:2px
+}
+.weui-button{
+  background-color: #00c8fa
+}

@@ -1,0 +1,10 @@
+/* pages/login/login.wxss */
+.fontsize{
+  font-size:30rpx;
+}
+.cu-list.menu>.cu-item {
+  justify-content: space-around;
+}
+.cu-list.menu>.cu-item .content{
+  flex:none;
+}

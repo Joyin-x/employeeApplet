@@ -1,0 +1,25 @@
+/* pages/notice/notice.wxss */
+
+.weui-btn {
+  background-color: #00c8fa;
+  margin-top: 0.5em;
+}
+
+.weui-cells:after {
+  bottom: 0;
+  border-bottom: 0;
+}
+
+.nowrap {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nowrap1 {
+  width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+}

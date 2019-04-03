@@ -1,0 +1,18 @@
+<!--pages/addEmployee/addEmployee.wxml-->
+<view class="cu-custom" style="height:{{CustomBar}}px;">
+  <view class="cu-bar fixed bg-cyan" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+    <view class='content' style='top:{{StatusBar}}px;'>上传图片</view>
+  </view>
+</view>
+<view class="margin-top">
+  <form bindsubmit='formSubmit' bindreset='formReset'>
+    <view class="weui-uploader__bd">
+      <view class="weui-uploader__input-box">
+        <image src="{{photos}}" style='width:75px;height:75px'>></image>
+        <view class="weui-uploader__input" bindtap="chooseImage"></view>
+      </view>
+    </view>
+    <button class='btn  bg-cyan' formType="submit">发布</button>
+  </form>
+</view>
+<button type='primary' bindtap='a'>dsf</button>

@@ -1,0 +1,33 @@
+/* pages/my/my.wxss */
+.weui-cells{
+	margin-top: 0
+}
+
+.weui-cells:before{
+	border-top:0
+}
+.weui-cells:after{
+	border-bottom:0
+}
+.user-top {
+    position: relative;
+    background: #fff;
+}
+
+.user-head {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 80px;
+    text-align: center;
+    color: #fff;
+    font-size: 15px;
+}
+
+.user-head image {
+    width: 65px;
+    height: 65px;
+    border-radius:50%;
+    border: 2px solid #fff;
+    background: #fff;
+}

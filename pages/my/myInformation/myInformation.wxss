@@ -1,0 +1,13 @@
+/* pages/my/myInformation/myInformation.wxss */
+
+.cu-avatar.lg {
+  width: 80rpx;
+  height: 80rpx;
+}
+.cu-form-group {
+  padding:0;
+}
+.cu-bar .action:last-child {
+  margin-right:230rpx;
+}
+

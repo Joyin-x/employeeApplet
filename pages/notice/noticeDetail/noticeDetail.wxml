@@ -1,0 +1,52 @@
+<!--pages/noticeDetail/noticeDetail.wxml-->
+<view class="cu-custom" style="height:{{CustomBar}}px;">
+  <view class="cu-bar fixed bg-gradual-blue" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+    <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
+      <text class='icon-back'></text>
+      <view class='content' style='top:{{StatusBar}}px;'>公告详情</view>
+    </navigator>
+  </view>
+</view>
+
+<view class="cu-card dynamic" style="margin-bottom:3em">
+  <view class="cu-item shadow">
+    <view class="cu-list menu menu-avatar">
+      <view class="cu-item">
+        <view class="cu-avatar round lg" style="background-image:url({{userInfo.picture}});"></view>
+        <view class='content flex-sub'>
+          <view>{{noticeDetail.name}}</view>
+          <view class='text-gray text-sm flex justify-between'>
+            {{noticeDetail.noticeTime}}
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='main-content'>
+      {{noticeDetail.content}}
+    </view>
+    <view class='text-xl text-right padding'>
+      <text class="{{like?'text-blue':'text-grey'}} icon-appreciatefill" bindtap='like'></text> {{noticeDetail.like}}
+      <text class="icon-messagefill text-grey"></text> {{discussList.length}}
+    </view>
+    <view class="cu-list menu menu-avatar comment solids-top">
+      <view class="cu-item" wx:for="{{discussList}}" wx:key>
+        <view class="cu-avatar round" style="background-image:url({{item.picture}});"></view>
+        <view class='content'>
+          <view class='text-grey'>{{item.employeeName}}</view>
+          <view class='text-black text-content text-df'>
+            {{item.content}}
+          </view>
+          <view class='margin-top-sm flex justify-between'>
+            <view class='text-gray text-df'>{{item.discussTime}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='box' style="position:fixed;bottom:0;width:100%;">
+  <view class="cu-bar input">
+    <input value="{{content}}" class='solid-bottom' maxlength="300" cursor-spacing="10" placeholder='评论你的观点'  bindinput='content'></input>
+    <button class='cu-btn bg-blue shadow-blur' bindtap='addDiscuss'>评论</button>
+  </view>
+</view>

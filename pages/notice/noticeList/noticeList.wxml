@@ -1,0 +1,32 @@
+<!--pages/notice/notice.wxml-->
+<view class="cu-custom" style="height:{{CustomBar}}px;">
+  <view class="cu-bar fixed bg-gradual-blue" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+    <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
+      <text class='icon-back'></text>
+      <view class='content' style='top:{{StatusBar}}px;'>公告</view>
+    </navigator>
+  </view>
+</view>
+<view class="cu-bar bg-white solid-bottom margin-top">
+  <view class='action'>
+    <text class='icon-titles text-orange '></text> 公告通知
+  </view>
+  <view class='action'>
+    <text class='icon-roundaddfill lg text-orange' bindtap='addNotice'></text>
+  </view>
+</view>
+<view class="cu-card article">
+  <view wx:for="{{noticeList}}" wx:key class="cu-item shadow" bindtap='getDetail' data-id="{{item.id}}">
+    <view class="title nowrap">{{item.header}}</view>
+    <view class="content">
+      <image src="http://120.79.187.96/image/notice.jpg" style="width:75px;height:75px" mode="aspectFill"></image>
+      <view class="desc">
+        <view class='text-content nowrap11'> {{item.content}}</view>
+        <view>
+          <view class='cu-tag bg-red light xs round'>{{item.name}}</view>
+          <view class='cu-tag bg-green light xs round'>{{item.noticeTime}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

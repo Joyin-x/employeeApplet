@@ -1,0 +1,43 @@
+<!--pages/my/attendance/attendance.wxml-->
+<view class="cu-custom" style="height:{{CustomBar}}px;">
+  <view class="cu-bar fixed bg-gradual-red" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+    <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
+      <text class='icon-back'></text> 打卡管理
+    </navigator>
+  </view>
+</view>
+
+<view class="cu-bar bg-white solid-bottom">
+  <view class='action'>
+    <text class='icon-title text-orange '></text> 管理列表
+  </view>
+</view>
+<view class="cu-list menu sm-border">
+<view class="cu-item arrow" bindtap='doAction' data-flag="0">
+    <view class='content'>
+      <text class='icon-flashbuyfill text-blue'></text>
+      <text class='text-blue'>打卡</text>
+    </view>
+    <view class='action'>
+      <text class='text-green text-sm'>开启美好一天</text>
+    </view>
+  </view>
+  <view class="cu-item arrow" bindtap='doAction' data-flag="1">
+    <view class='content'>
+      <text class='icon-sort text-brown'></text>
+      <text class='text-brown'>打卡记录查询</text>
+    </view>
+    <view class='action'>
+      <text class='text-purple text-sm'>查看记录</text>
+    </view>
+  </view>
+   <view class="cu-item arrow" bindtap='doAction' data-flag="2">
+    <view class='content'>
+      <text class='icon-rank text-cyan'></text>
+      <text class='text-cyan'>今日排行</text>
+    </view>
+    <view class='action'>
+      <text class='text-yellow text-sm'>打卡排行榜</text>
+    </view>
+  </view>
+</view>

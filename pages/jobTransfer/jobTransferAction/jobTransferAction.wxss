@@ -1,0 +1,5 @@
+/* pages/jobTransfer/jobTransfer.wxss */
+.weui-btn{
+  background-color:#00c8fa;
+  color:#fff;
+}

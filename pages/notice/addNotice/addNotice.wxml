@@ -1,0 +1,27 @@
+<!--pages/addNotice/addNotice.wxml-->
+<view class="cu-custom" style="height:{{CustomBar}}px;">
+  <view class="cu-bar fixed bg-gradual-blue" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+    <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
+      <text class='icon-back'></text>
+      <view class='content' style='top:{{StatusBar}}px;'>新公告发布</view>
+    </navigator>
+  </view>
+</view>
+<view>
+  <view class="cu-list menu card-menu margin-top">
+    <form bindsubmit="addSubmit" enctype="multipart/form-data">
+      <view class="cu-form-group">
+        <view class='title'>标题：</view>
+        <input class='radius' name="noticeName" placeholder='请输入标题'></input>
+      </view>
+      <view class="cu-form-group top">
+        <view class='title'>内容：</view>
+        <textarea placeholder="请输入公告内容" maxlength="5000" placeholder-class='placeholder' name="noticeContent" style="height:12em"></textarea>
+      </view>
+      <view class="padding-sm">
+        <button class='cu-btn block bg-blue margin-tb-sm lg' form-type="submit">
+          <text class='iconfont-spin'></text> 提交</button>
+      </view>
+    </form>
+  </view>
+</view>

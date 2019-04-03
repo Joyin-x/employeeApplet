@@ -1,0 +1,4 @@
+/* pages/employee/updateEmployee/updateEmployee.wxss */
+.weui-btn{
+  background-color: #00c8fa;
+}
