@@ -1,0 +1,42 @@
+<!--pages/work/reward/reward.wxml-->
+<view class="cu-custom" style="height:{{CustomBar}}px;">
+  <view class="cu-bar fixed bg-gradual-blue" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+    <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
+      <text class='icon-back'></text>员工奖惩
+    </navigator>
+  </view>
+</view>
+
+<view class="cu-list menu card-menu margin-top">
+  <form bindsubmit="submit" enctype="multipart/form-data">
+    <view class="cu-form-group">
+    <text class='icon-my text-blue'></text>
+      <view class='title text-blue'>姓名：</view>
+      <input class='radius' name='name' value="{{name}}" disabled></input>
+    </view>
+    <view class="cu-form-group">
+    <text class='icon-vipcard text-green'></text>
+      <view class='title text-green'>部门：</view>
+      <input class='radius' name='departmentName' value="{{departmentName}}" disabled></input>
+    </view>
+    <view class="cu-form-group">
+    <text class='icon-medal text-brown'></text>
+      <view class='title text-brown'>职务：</view>
+      <input class='radius' name='position' value="{{position}}" disabled></input>
+    </view>
+    <view class="cu-form-group">
+      <text class='icon-moneybag text-cyan'></text>
+      <view class='title text-cyan'>奖惩金额：</view>
+      <input class='radius' name='money' value="{{userInfo.position}}" placeholder='在此处输入金额'></input>
+    </view>
+    <view class="cu-form-group top" style="padding:1rpx 30rpx">
+      <text class='icon-question text-mauve'></text>
+      <text class='text-mauve' style="font-size:30rpx;">奖惩原因：</text>
+      <textarea class='text-black' name="reason" placeholder='请在此处输入奖惩原因'></textarea>
+    </view>
+    <view class="padding-sm">
+      <button class='cu-btn block bg-blue margin-tb-sm lg' form-type="submit">
+        <text class='iconfont-spin'></text> 确定</button>
+    </view>
+  </form>
+</view>

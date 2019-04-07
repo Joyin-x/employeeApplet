@@ -36,12 +36,12 @@
       <text class='text-grey'>我的加班</text>
     </view>
   </view>
-  <view class="cu-item arrow" bindtap='doAction' data-flag="3">
+  <!-- <view class="cu-item arrow" bindtap='doAction' data-flag="3">
     <view class='content'>
       <text class='icon-recharge text-blue'></text>
       <text class='text-grey'>我的工资</text>
     </view>
-  </view>
+  </view> -->
   <view class="cu-item arrow" bindtap='doAction' data-flag="4">
     <view class='content'>
       <text class='icon-sort text-mauve'></text>

@@ -1,5 +1,5 @@
-// pages/work/money/money.js
-const app=getApp();
+// pages/work/money/moneyAction.js
+const app = getApp();
 Page({
 
   /**
@@ -8,45 +8,18 @@ Page({
   data: {
     StatusBar: app.globalData.StatusBar, //手机状态栏的高度，单位px
     CustomBar: app.globalData.CustomBar, //设定状态栏的高度，单位px
-    userInfo:'',//用户信息
+    flag:'',//
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getInfo();
-
-  },
-  //获取用户信息
-  getInfo() {
-    let userInfo = wx.getStorageSync("userInfo");
     this.setData({
-      userInfo: userInfo
+      flag:options.flag
     });
-    if (userInfo.flag == 0) {
-      wx.showModal({
-        title: '警告',
-        content: userInfo.name + ',你的职位为' + userInfo.position + ',权限不足',
-        showCancel: false,
-        confirmText: "返回",
-        confirmColor: "#00BFFF",
-        success: res => {
-          wx.navigateBack({
-            delta: 1
-          })
-        }
-      });
-    }
   },
-  //跳转到工资管理的操作界面
-  doAction(e) {
-    let flag = e.currentTarget.dataset.flag;
-    let userInfo = this.data.userInfo;
-      wx.navigateTo({
-        url: '/pages/work/moneyAction/moneyAction?flag='+ flag,
-      });
-  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -11,7 +11,6 @@ Page({
   data: {
     StatusBar: app.globalData.StatusBar, //手机状态栏的高度，单位px
     CustomBar: app.globalData.CustomBar, //设定状态栏的高度，单位px
-    ColorList: app.globalData.ColorList,
     flag: '', //传过来的命令下标
     location: '', //获取当前所在地点
     departmentList: [], //部门id和名字

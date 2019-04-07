@@ -9,7 +9,6 @@ Page({
   data: {
     StatusBar: app.globalData.StatusBar, //手机状态栏的高度，单位px
     CustomBar: app.globalData.CustomBar, //设定状态栏的高度，单位px
-    ColorList: app.globalData.ColorList,
     id: '',
     userInfo: '', //登录缓存的用户信息
     startDate: util.formatDate(new Date()), //加班申请开始时间

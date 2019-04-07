@@ -24,7 +24,9 @@
     "pages/task/addTask/addTask",
     "pages/work/overTime/overTime",
     "pages/work/overTimeAction/overTimeAction",
-    "pages/work/money/money"
+    "pages/work/money/money",
+    "pages/work/moneyAction/moneyAction",
+    "pages/work/reward/reward"
   ],
   "permission": {
     "scope.userLocation": {
@@ -39,7 +41,7 @@
   },
   "tabBar": {
     "color": "#000",
-    "selectedColor": "#00c8fa",
+    "selectedColor": "#1cbbb4",
     "borderStyle": "white",
     "list": [
       {

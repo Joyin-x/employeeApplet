@@ -9,7 +9,6 @@ Page({
   data: {
     StatusBar: app.globalData.StatusBar, //手机状态栏的高度，单位px
     CustomBar: app.globalData.CustomBar, //设定状态栏的高度，单位px
-    ColorList: app.globalData.ColorList,
     data: '', //后台返回的用户信息
     url:'',//微信返回的用户头像
   },
@@ -43,6 +42,10 @@ Page({
       });
       return;
     }
+    wx.showLoading({
+      title:'登录中',
+      mask:true
+    })
     wx.request({
       url: app.globalData.baseUrl + '/employee/login',
       data: {
@@ -62,13 +65,16 @@ Page({
             wx.showToast({
               title: '登陆成功',
               duration:2000
-            })
+            });
+            wx.hideLoading();
           });
         } else {
           wx.showToast({
             title: res.data.msg,
-            image:"/images/warning.png"
-          })
+            image:"/images/warning.png",
+            duration:2000
+          });
+          wx.hideLoading();
         }
       }
     });

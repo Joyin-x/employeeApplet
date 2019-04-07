@@ -9,7 +9,6 @@ Page({
   data: {
     StatusBar: app.globalData.StatusBar, //手机状态栏的高度，单位px
     CustomBar: app.globalData.CustomBar, //设定状态栏的高度，单位px
-    ColorList: app.globalData.ColorList,
     id: "", //传过来的员工id
     name: "", //传过来的员工姓名
     departmentName: "", //传过来员工所在的部门名

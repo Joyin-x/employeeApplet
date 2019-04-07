@@ -7,7 +7,6 @@ Page({
   data: {
     StatusBar: app.globalData.StatusBar, //手机状态栏的高度，单位px
     CustomBar: app.globalData.CustomBar, //设定状态栏的高度，单位px
-    ColorList: app.globalData.ColorList,
     emplyeeList: [], //员工信息
     TabCur: 0, //左侧标签栏下标
     VerticalNavTop: 0, //右侧文本区下标

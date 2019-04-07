@@ -7,9 +7,7 @@ Page({
    */
   data: {
     StatusBar: app.globalData.StatusBar, //手机状态栏的高度，单位px
-    CustomBar: app.globalData.CustomBar, //设定状态栏的高度，单位px
-    ColorList: app.globalData.ColorList,
-    
+    CustomBar: app.globalData.CustomBar, //设定状态栏的高度，单位px    
   },
 
   submit(e){

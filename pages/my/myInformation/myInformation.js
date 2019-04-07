@@ -9,7 +9,6 @@ Page({
   data: {
     StatusBar: app.globalData.StatusBar, //手机状态栏的高度，单位px
     CustomBar: app.globalData.CustomBar, //设定状态栏的高度，单位px
-    ColorList: app.globalData.ColorList,
     flag: "", //传过来的标志flag
     navs: ["已完成", "未完成"],
     TabCur: 0,
@@ -142,6 +141,10 @@ Page({
           that.setData({
             photos: res.tempFilePaths[0],
           });
+          wx.showLoading({
+            title: '正在修改',
+            mask:true
+          })
           that.upload(that);
         }
       });
@@ -173,7 +176,7 @@ Page({
       },
       success: function(res) {
         let data = JSON.parse(res.data);
-        console.log(data);
+        wx.hideLoading();
         if (data.code == 200) {
           let picture = data.data;
           let i = picture.lastIndexOf('/');

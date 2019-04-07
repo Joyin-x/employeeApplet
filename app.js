@@ -9,6 +9,9 @@ App({
         let custom = wx.getMenuButtonBoundingClientRect();
         this.globalData.Custom = custom;
         this.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
+        console.log(this.globalData.StatusBar);
+        console.log(this.globalData.Custom);
+        console.log(this.globalData.CustomBar);
       }
     });
      //this.checkLogin();
@@ -123,7 +126,7 @@ App({
 //http://localhost:8080/ssmstart_war/
 //https://weixiong.info
   globalData: {
-    baseUrl: 'http://localhost:8080/ssmstart_war/',
+    baseUrl: 'https://weixiong.info/',
     url:null,
     uuid:''
   }

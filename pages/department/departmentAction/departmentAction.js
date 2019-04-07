@@ -8,7 +8,6 @@ Page({
   data: {
     StatusBar: app.globalData.StatusBar, //手机状态栏的高度，单位px
     CustomBar: app.globalData.CustomBar, //设定状态栏的高度，单位px
-    ColorList: app.globalData.ColorList,
     id: '', //判断部门操作的多个列
     departmentList: '', //部门信息
     showModify: false, //是否显示修改页面
@@ -124,10 +123,7 @@ Page({
   },
   //增加部门确定按钮
   addSubmit: function(e) {
-   console.log(e);
     let that = this, principalIndex=this.data.principalIndex;
-    console.log(principalIndex);
-    console.log(that.data.principal);
     wx.request({
       url: app.globalData.baseUrl + "/department/addDepartment",
       method: 'POST',
@@ -143,7 +139,6 @@ Page({
         description: e.detail.value.description,
       },
       success: res => {
-        console.log(res);
         if (res.data.code == 200) {
           wx.showToast({
             title: res.data.msg,

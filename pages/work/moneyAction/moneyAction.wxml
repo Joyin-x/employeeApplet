@@ -1,0 +1,212 @@
+<!--pages/work/moneyAction/moneyAction.wxml-->
+<view class="cu-custom" style="height:{{CustomBar}}px;">
+  <view class="cu-bar fixed bg-gradual-blue" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+    <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
+      <text class='icon-back'></text>
+      <view wx:if="{{flag==0}}">工资发放
+      </view>
+      <view wx:elif="{{flag==1}}">出勤统计
+      </view>
+      <view wx:elif="{{flag==2}}">部门底薪
+      </view>
+      <view wx:else>奖惩
+      </view>
+    </navigator>
+  </view>
+</view>
+<view wx:if="{{flag==0}}">
+  <view class="cu-list menu sm-border card-menu margin-top">
+    <view class="cu-item">
+      <view class='content'>
+        <picker bindchange="bindWagesChange" value="{{departmentList[index].idx}}" range="{{departmentList}}" range-key="{{'departmentName'}}">
+          <view class="picker">
+            按部门发放：{{departmentList[index].departmentName}}
+          </view>
+        </picker>
+      </view>
+    </view>
+  </view>
+
+  <view class="cu-list menu sm-border card-menu margin-top" wx:for="{{wageList}}" wx:key wx:for-index="idx">
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-my text-blue'></text>
+        <text class='text-blue'>姓名：</text>
+        <text class='text-black'>{{item.name}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-vipcard text-green'></text>
+        <text class='text-green'>部门：</text>
+        <text class='text-black'>{{departmentList[index].departmentName}}</text>
+      </view>
+      <view class="cu-item">
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-medal text-brown'></text>
+        <text class='text-brown'>职务：</text>
+        <text class='text-black'>{{item.position}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-moneybag text-mauve'></text>
+        <text class='text-mauve'>底薪：</text>
+        <text class='text-black'>{{item.basic_salary}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-redpacket text-red'></text>
+        <text class='text-red'>奖惩：</text>
+        <text class='text-black'>{{item.bonus}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-countdown text-orange'></text>
+        <text class='text-orange'>加班费：</text>
+        <text class='text-black'>{{item.overtime_pay}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-sponsor text-cyan'></text>
+        <text class='text-cyan'>实发工资：</text>
+        <text class='text-black'>{{item.net_payroll}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-time text-brown'></text>
+        <text class='text-brown'>开始时间:</text>
+        <text class='text-black'>{{item.start_time}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-time text-brown'></text>
+        <text class='text-brown'>截止日期：</text>
+        <text class='text-black'>{{item.end_time}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-time text-brown'></text>
+        <text class='text-brown'>发放日期：</text>
+        <text class='text-black'>{{item.pay_date}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+<view wx:elif="{{flag==1}}">
+  <view class="cu-list menu sm-border card-menu margin-top">
+    <view class="cu-item">
+      <view class='content'>
+        <picker bindchange="bindRewardsChange" value="{{departmentList[index].idx}}" range="{{departmentList}}" range-key="{{'departmentName'}}">
+          <view class="picker">
+            按部门统计：{{departmentList[index].departmentName}}
+          </view>
+        </picker>
+      </view>
+    </view>
+  </view>
+
+  <view class="cu-list menu sm-border card-menu margin-top">
+    <view class="cu-item arrow" wx:for="{{employeeList[0].employeeList}}" wx:key bindtap='getAttendance' data-id="{{item.id}}">
+      <view class='content'>
+        <view>{{item.name}}</view>
+        <view class='text-gray text-sm'>
+          <text class='text-red'></text>{{item.position}}</view>
+      </view>
+      <view class='action'>
+        <view class='text-grey text-sm'>点击查看</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view wx:elif="{{flag==2}}">
+  <view class="cu-list menu sm-border card-menu margin-top">
+    <view class="cu-item">
+      <view class='content'>
+        <picker bindchange="bindPickerChange" value="{{departmentList[index].idx}}" range="{{departmentList}}" range-key="{{'departmentName'}}">
+          <view class="picker">
+            按部门设置：{{departmentList[index].departmentName}}
+          </view>
+        </picker>
+      </view>
+    </view>
+  </view>
+  <view class="cu-list menu sm-border card-menu margin-top">
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-my text-blue'></text>
+        <text class='text-blue'>部门：</text>
+        <text class='text-black'>{{moneyList.department_name}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-vipcard text-cyan'></text>
+        <text class='text-cyan'>负责人：</text>
+        <text class='text-black'>{{moneyList.principal}}</text>
+      </view>
+      <view class="cu-item">
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content' style="display:flex">
+        <text class='icon-moneybag text-cyan'></text>
+        <text class='text-cyan'>底薪：</text>
+        <input name='basicSalary' value="{{moneyList.basic_salary}}" placeholder='点击设置底薪' bindblur="BasiceSalary"></input>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-time text-brown'></text>
+        <text class='text-brown'>成立时间：</text>
+        <text class='text-black'>{{moneyList.established_time}}</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class='content'>
+        <text class='icon-post text-mauve'></text>
+        <text class='text-mauve'>部门描述：</text>
+        <text class='text-black'>{{moneyList.description||"无"}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="padding-sm">
+    <button class='cu-btn block bg-blue margin-tb-sm lg' bindtap='setBasicSalary'>
+      <text class='iconfont-spin'></text> 设置底薪</button>
+  </view>
+</view>
+<view wx:elif="{{flag==3}}">
+  <view class="cu-list menu sm-border card-menu margin-top">
+    <view class="cu-item">
+      <view class='content'>
+        <picker bindchange="bindRewardsChange" value="{{departmentList[index].idx}}" range="{{departmentList}}" range-key="{{'departmentName'}}">
+          <view class="picker">
+            按部门查看：{{departmentList[index].departmentName}}
+          </view>
+        </picker>
+      </view>
+    </view>
+  </view>
+
+  <view class="cu-list menu sm-border card-menu margin-top">
+    <view class="cu-item arrow" wx:for="{{employeeList[0].employeeList}}" wx:key="*this" bindtap="toEmployeeDetail" data-id="{{item.id}}" data-position="{{item.position}}" data-department="{{employeeList[0].departmentName}}" data-name="{{item.name}}">
+      <view class='content'>
+        <view>{{item.name}}</view>
+        <view class='text-gray text-sm'>
+          <text class='text-red'></text>{{item.position}}</view>
+      </view>
+      <view class='action'>
+        <view class='text-grey text-sm'>奖惩设置</view>
+      </view>
+    </view>
+  </view>
+</view>

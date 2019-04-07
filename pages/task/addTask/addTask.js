@@ -9,7 +9,6 @@ Page({
   data: {
     StatusBar: app.globalData.StatusBar,//手机状态栏的高度，单位px
     CustomBar: app.globalData.CustomBar,//设定状态栏的高度，单位px
-    ColorList: app.globalData.ColorList,
     id:'',//员工id
     name:'',//员工姓名
     departmentName:'',//部门名

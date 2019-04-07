@@ -8,7 +8,6 @@ Page({
   data: {
     StatusBar: app.globalData.StatusBar, //手机状态栏的高度，单位px
     CustomBar: app.globalData.CustomBar, //设定状态栏的高度，单位px
-    ColorList: app.globalData.ColorList,
     id: '', //传过来的员工id
     list: [], //员工个人岗位调动记录
     departmentList: [], //部门名和id
