@@ -72,30 +72,42 @@ Page({
   },
   //删除员工调动记录
   deleteMobilize(e){
-    let id = e.target.dataset.id,that=this;
-    wx.request({
-      url: app.globalData.baseUrl+'/mobilize/deleteMobilize',
-      data:{
-        id:id
-      },
-      success(res){
-        if(res.data.code==200){
-          setTimeout(function(){
-            wx.navigateBack({
-              delta:1
-            })
-          },2000);
-          wx.showToast({
-            title:res.data.msg,
-          });
-        }else{
-          wx.showToast({
-            title: res.data.msg,
-            image:'/images/warning.png'
-          })
-        }
-      }
-    })
+	  let id=app.getDepartmentID();
+	  if (wx.getStorageSync("userInfo").flag == 2 || wx.getSystemInfoSync("userInfo").department_id==id){
+		  let id = e.target.dataset.id, that = this;
+		  wx.request({
+			  url: app.globalData.baseUrl + '/mobilize/deleteMobilize',
+			  data: {
+				  id: id
+			  },
+			  success(res) {
+				  if (res.data.code == 200) {
+					  setTimeout(function () {
+						  wx.navigateBack({
+							  delta: 1
+						  })
+					  }, 2000);
+					  wx.showToast({
+						  title: res.data.msg,
+					  });
+				  } else {
+					  wx.showToast({
+						  title: res.data.msg,
+						  image: '/images/warning.png'
+					  })
+				  }
+			  }
+		  })
+	  }else{
+		  wx.showModal({
+			  title: '警告',
+			  content: '你的职务为' + wx.getStorageSync("userInfo").position+ ',权限不足',
+			  showCancel: false,
+			  confirmText: "返回",
+			  confirmColor: "#00BFFF",
+		  });
+	  }
+   
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

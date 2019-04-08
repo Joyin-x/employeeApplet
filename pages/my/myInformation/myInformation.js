@@ -31,7 +31,7 @@ Page({
    */
   onLoad: function(options) {
     let userInfo = wx.getStorageSync("userInfo");
-    userInfo.birthday = app.timestamp(userInfo.birthday, 1);
+    userInfo.birthday = util.formatDate(new Date(userInfo.birthday));
     this.setData({
       flag: options.flag,
       userInfo: userInfo

@@ -131,6 +131,7 @@ Page({
             },
             method: 'POST',
             success(res) {
+				console.log(res);
                 if (res.data.code == 200) {
                     that.setData({
                         employeeList: res.data.data
