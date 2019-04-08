@@ -9,9 +9,6 @@ App({
         let custom = wx.getMenuButtonBoundingClientRect();
         this.globalData.Custom = custom;
         this.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
-        console.log(this.globalData.StatusBar);
-        console.log(this.globalData.Custom);
-        console.log(this.globalData.CustomBar);
       }
     });
      //this.checkLogin();
@@ -75,7 +72,6 @@ App({
     var that=this;
     wx.login({
       success(res) {
-        console.log(res);
         if (res.code) {
           // 发起网络请求
           
@@ -87,7 +83,6 @@ App({
             success(response){
               that.globalData.uuid=response.data.data;
               that.getSession();
-              console.log(response);
             }
           })
         } else {
@@ -104,29 +99,14 @@ App({
         uuid: that.globalData.uuid
       },
       success(response) {
-        console.log(response);
       }
     })
   },
-  //时间戳转换为时间(0返回时分秒，1不返回)
-  timestamp(timestamp,flag) {
-    var date = new Date(timestamp);
-    var Y = date.getFullYear() + '-';
-    var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
-    var D = date.getDate() + ' ';
-    var h = date.getHours() + ':';
-    var m = date.getMinutes() + ':';
-    var s = date.getSeconds();
-    if(flag==0){
-      return Y + M + D + h + m + s;
-    }else{
-      return Y + M + D;
-    }
-  },
+
 //http://localhost:8080/ssmstart_war/
 //https://weixiong.info
   globalData: {
-    baseUrl: 'https://weixiong.info/',
+	  baseUrl: 'http://localhost:8080/ssmstart_war/',
     url:null,
     uuid:''
   }

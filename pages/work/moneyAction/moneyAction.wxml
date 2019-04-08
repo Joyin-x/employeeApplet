@@ -161,7 +161,7 @@
       <view class='content' style="display:flex">
         <text class='icon-moneybag text-cyan'></text>
         <text class='text-cyan'>底薪：</text>
-        <input name='basicSalary' value="{{moneyList.basic_salary}}" placeholder='点击设置底薪' bindblur="BasiceSalary"></input>
+        <input name='basicSalary' value="{{moneyList.basic_salary}}" placeholder='点击设置底薪' bindblur="basiceSalary"></input>
       </view>
     </view>
     <view class="cu-item">
@@ -188,7 +188,7 @@
   <view class="cu-list menu sm-border card-menu margin-top">
     <view class="cu-item">
       <view class='content'>
-        <picker bindchange="bindRewardsChange" value="{{departmentList[index].idx}}" range="{{departmentList}}" range-key="{{'departmentName'}}">
+        <picker bindchange="bindRewardsChange" value="{{departmentList[index].idx||'点击设置底薪'}}" range="{{departmentList}}" range-key="{{'departmentName'}}">
           <view class="picker">
             按部门查看：{{departmentList[index].departmentName}}
           </view>
@@ -198,7 +198,7 @@
   </view>
 
   <view class="cu-list menu sm-border card-menu margin-top">
-    <view class="cu-item arrow" wx:for="{{employeeList[0].employeeList}}" wx:key="*this" bindtap="toEmployeeDetail" data-id="{{item.id}}" data-position="{{item.position}}" data-department="{{employeeList[0].departmentName}}" data-name="{{item.name}}">
+    <view class="cu-item arrow" wx:for="{{employeeList[0].employeeList}}" wx:key bindtap="toReward" data-id="{{item.id}}" data-position="{{item.position}}" data-department="{{employeeList[0].departmentName}}" data-name="{{item.name}}">
       <view class='content'>
         <view>{{item.name}}</view>
         <view class='text-gray text-sm'>
