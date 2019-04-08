@@ -1,4 +1,4 @@
-// pages/my/attendanceAction/attendanceAction.js
+	// pages/my/attendanceAction/attendanceAction.js
 const app = getApp();
 var QQMapWX = require('..//../../utils/qqmap-wx-jssdk.js');
 var util = require('../../../utils/util.js');
@@ -160,10 +160,10 @@ Page({
           console.log(attendanceList);
           for (let i = 0; i < attendanceList.length; i++) {
             if (attendanceList[i].office_time != null){
-              attendanceList[i].office_time = app.timestamp(attendanceList[i].office_time,0);
+              attendanceList[i].office_time = util.formatDate(new Date(attendanceList[i].office_time));
             }
             if (attendanceList[i].after_work!=null){
-              attendanceList[i].after_work = app.timestamp(attendanceList[i].after_work, 0);
+              attendanceList[i].after_work = util.formatDate(new Date(attendanceList[i].after_work));
             }
           }
           that.setData({
@@ -187,10 +187,10 @@ Page({
           let rankList = res.data.data;
           for (let i = 0; i < rankList.length; i++) {
             if (rankList[i].office_time != null) {
-              rankList[i].office_time = app.timestamp(rankList[i].office_time, 0);
+				rankList[i].office_time = util.formatDate(new Date(rankList[i].office_time));
             }
             if (rankList[i].after_work != null) {
-              rankList[i].after_work = app.timestamp(rankList[i].after_work, 0);
+				rankList[i].after_work = util.formatDate(new Date(rankList[i].after_work));
             }
           }
           that.setData({
@@ -218,7 +218,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+	 
   },
 
   /**

@@ -11,7 +11,6 @@ Page({
   },
 
   submit(e){
-    console.log(e);
     let phone=e.detail.value.phone,
     email=e.detail.value.email;
     if(phone==""){
@@ -34,7 +33,7 @@ Page({
         phone:phone,
         email:email,
       },
-      sucess(res){
+      success(res){
         console.log(res);
         if(res.data.code==200){
           setTimeout(function(){
