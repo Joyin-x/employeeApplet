@@ -41,7 +41,7 @@ Page({
         console.log(res);
         if (res.data.code == 200) {
           let noticeDetail = res.data.data;
-          noticeDetail.noticeTime = app.timestamp(noticeDetail.noticeTime, 1);
+          noticeDetail.noticeTime = util.formatDate(new Date(noticeDetail.noticeTime));
           self.setData({
             noticeDetail: noticeDetail
           });
@@ -102,7 +102,7 @@ Page({
         if(res.data.code==200){
           let discussList=res.data.data;
           for(let i=0;i<discussList.length;i++){
-            discussList[i].discussTime = app.timestamp(discussList[i].discussTime,1);
+            discussList[i].discussTime = util.formatDate(new Date(discussList[i].discussTime));
           }
           that.setData({
             discussList: discussList

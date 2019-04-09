@@ -142,7 +142,7 @@ App({
     //http://localhost:8080/ssmstart_war/
     //https://weixiong.info
     globalData: {
-		baseUrl: 'http://localhost:8080/ssmstart_war/',
+      baseUrl: 'https://weixiong.info/',
         url: null,
         uuid: ''
     }

@@ -1,5 +1,6 @@
 // pages/notice/notice.js
 var app = getApp();
+var util = require('../../../utils/util.js');
 Page({
 
   /**
@@ -27,7 +28,7 @@ Page({
         if (res.data.code == 200) {
           let noticeList = res.data.data;
           for (let i = 0; i < noticeList.length; i++) {
-            noticeList[i].noticeTime = app.timestamp(noticeList[i].noticeTime,1);
+            noticeList[i].noticeTime = util.formatDate(new Date(noticeList[i].noticeTime));
           }
           self.setData({
             noticeList: res.data.data

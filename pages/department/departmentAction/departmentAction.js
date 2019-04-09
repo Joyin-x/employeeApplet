@@ -124,6 +124,20 @@ Page({
   //增加部门确定按钮
   addSubmit: function(e) {
     let that = this, principalIndex=this.data.principalIndex;
+    if (e.detail.value.departmentName == "") {
+      wx.showToast({
+        title: '部门名不能为空',
+        image: '/images/warning.png'
+      });
+      return;
+    }
+    if (e.detail.value.position == "") {
+      wx.showToast({
+        title: '职务不能为空',
+        image: '/images/warning.png'
+      });
+      return;
+    }
     wx.request({
       url: app.globalData.baseUrl + "/department/addDepartment",
       method: 'POST',
