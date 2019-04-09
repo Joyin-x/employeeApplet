@@ -42,7 +42,7 @@ App({
     getDepartmentID1() {
         let id = 0,
             list = this.globalData.departmentList;
-			console.log(list);
+        console.log(list);
         for (let i = 0; i < list.length; i++) {
             if (list[i].departmentName == "财务部") {
                 id = list[i].id;
@@ -142,7 +142,7 @@ App({
     //http://localhost:8080/ssmstart_war/
     //https://weixiong.info
     globalData: {
-		baseUrl: 'https://weixiong.info/',
+		baseUrl: 'http://localhost:8080/ssmstart_war/',
         url: null,
         uuid: ''
     }

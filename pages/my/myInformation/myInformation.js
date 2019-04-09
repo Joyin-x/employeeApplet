@@ -71,12 +71,12 @@ Page({
           let info = res.data.data;
           if (that.data.flag == 1) {
             for (let i = 0; i < info.length; i++) {
-              info[i].transfer_date = app.timestamp(info[i].transfer_date, 1);
+				info[i].transfer_date = util.formatDate(new Date(info[i].transfer_date));
             }
           } else if (that.data.flag == 2) {
             for (let i = 0; i < info.length; i++) {
-              info[i].startTime = app.timestamp(info[i].startTime, 1);
-              info[i].endTime = app.timestamp(info[i].endTime, 1);
+              info[i].startTime = util.formatDate(new Date(info[i].startTime));
+				info[i].endTime = util.formatDate(new Date(info[i].endTime));
             }
           } else if (that.data.flag == 4) {
             for (let i = 0; i < info.length; i++) {
@@ -89,8 +89,8 @@ Page({
                   notDo: that.data.notDo + 1
                 });
               }
-              info[i].start_time = app.timestamp(info[i].start_time, 1);
-              info[i].end_time = app.timestamp(info[i].end_time, 1);
+				info[i].start_time = util.formatDate(new Date(info[i].start_time));
+				info[i].end_time = util.formatDate(new Date(info[i].end_time));
             }
           }
           that.setData({
