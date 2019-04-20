@@ -77,6 +77,10 @@ Page({
     },
     //获取工资列表
     getWagesList(that, departmentId) {
+        wx.showLoading({
+          title: '正在计算工资',
+          mask:true
+        })
         let id = that.data.departmentList[departmentId].id;
         wx.request({
             url: app.globalData.baseUrl + "/money/payMoney",
@@ -84,6 +88,7 @@ Page({
                 id: id
             },
             success(res) {
+              wx.hideLoading();
                 if (res.data.code == 412) {
                     wx.showModal({
                         title: '提示',

@@ -1,61 +1,62 @@
 {
-	"pages": [
-		"pages/index/index",
-		"pages/employee/employeeList/employeeList",
-		"pages/employee/employeeDetail/employeeDetail",
-		"pages/employee/addEmployee/addEmployee",
-		"pages/employee/updateEmployee/updateEmployee",
-		"pages/my/login/login",
-		"pages/my/updatePassword/updatePassword",
-		"pages/my/forgetPassword/forgetPassword",
-		"pages/my/myInformation/myInformation",
-		"pages/my/attendance/attendance",
-		"pages/my/attendanceAction/attendanceAction",
-		"pages/my/myAction/myAction",
-		"pages/department/departmentList/departmentList",
-		"pages/department/departmentAction/departmentAction",
-		"pages/jobTransfer/jobTransferList/jobTransferList",
-		"pages/jobTransfer/jobTransferRecord/jobTransferRecord",
-		"pages/jobTransfer/jobTransferAction/jobTransferAction",
-		"pages/notice/noticeList/noticeList",
-		"pages/notice/noticeDetail/noticeDetail",
-		"pages/notice/addNotice/addNotice",
-		"pages/task/home/home",
-		"pages/task/addTask/addTask",
-		"pages/work/overTime/overTime",
-		"pages/work/overTimeAction/overTimeAction",
-		"pages/work/money/money",
-		"pages/work/moneyAction/moneyAction",
-		"pages/work/reward/reward"
-	],
-	"permission": {
-		"scope.userLocation": {
-			"desc": "你的位置信息将用于考勤签到"
-		}
-	},
-	"window": {
-		"navigationBarBackgroundColor": "#39b54a",
-		"navigationBarTitleText": "首页",
-		"navigationStyle": "custom",
-		"navigationBarTextStyle": "white"
-	},
-	"tabBar": {
-		"color": "#000",
-		"selectedColor": "#1cbbb4",
-		"borderStyle": "white",
-		"list": [
-			{
-				"selectedIconPath": "images/shouye1.png",
-				"iconPath": "images/shouye.png",
-				"pagePath": "pages/index/index",
-				"text": "首页"
-			},
-			{
-				"selectedIconPath": "images/geren1.png",
-				"iconPath": "images/geren.png",
-				"pagePath": "pages/my/myAction/myAction",
-				"text": "我的"
-			}
-		]
-	}
+  "pages": [
+    "pages/index/index",
+    "pages/employee/employeeList/employeeList",
+    "pages/employee/employeeDetail/employeeDetail",
+    "pages/employee/addEmployee/addEmployee",
+    "pages/employee/updateEmployee/updateEmployee",
+    "pages/my/login/login",
+    "pages/my/updatePassword/updatePassword",
+    "pages/my/forgetPassword/forgetPassword",
+    "pages/my/myInformation/myInformation",
+    "pages/my/attendance/attendance",
+    "pages/my/attendanceAction/attendanceAction",
+    "pages/my/myAction/myAction",
+    "pages/department/departmentList/departmentList",
+    "pages/department/departmentAction/departmentAction",
+    "pages/jobTransfer/jobTransferList/jobTransferList",
+    "pages/jobTransfer/jobTransferRecord/jobTransferRecord",
+    "pages/jobTransfer/jobTransferAction/jobTransferAction",
+    "pages/notice/noticeList/noticeList",
+    "pages/notice/noticeDetail/noticeDetail",
+    "pages/notice/addNotice/addNotice",
+    "pages/task/home/home",
+    "pages/task/addTask/addTask",
+    "pages/work/overTime/overTime",
+    "pages/work/overTimeAction/overTimeAction",
+    "pages/work/money/money",
+    "pages/work/moneyAction/moneyAction",
+    "pages/work/reward/reward"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于考勤签到"
+    }
+  },
+  "window": {
+    "navigationBarBackgroundColor": "#39b54a",
+    "navigationBarTitleText": "首页",
+    "navigationStyle": "custom",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#000",
+    "selectedColor": "#1cbbb4",
+    "borderStyle": "white",
+    "list": [
+      {
+        "selectedIconPath": "images/shouye1.png",
+        "iconPath": "images/shouye.png",
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "selectedIconPath": "images/geren1.png",
+        "iconPath": "images/geren.png",
+        "pagePath": "pages/my/myAction/myAction",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
 }

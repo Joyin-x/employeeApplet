@@ -10,13 +10,13 @@
 <view class="cu-card case">
   <view class="cu-item shadow" wx:for="{{list}}" wx:key>
     <view class="weui-form-preview cu-list menu menu-avatar">
-      <view class="weui-form-preview__hd" style="color:#0081ff">
+      <view class="weui-form-preview__hd" style="color:#000">
         <view class="weui-form-preview__item">
           <view class="weui-form-preview__label">员工姓名</view>
           <view class="weui-form-preview__value_in-hd">{{item.name}}</view>
         </view>
       </view>
-      <view class="weui-form-preview__bd" style="color:#0081ff">
+      <view class="weui-form-preview__bd" style="color:#000">
         <view class="weui-form-preview__item">
           <view class="weui-form-preview__label">原部门</view>
           <view class="weui-form-preview__value_in-hd">{{item.originalDepartmentId}}</view>
