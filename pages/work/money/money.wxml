@@ -1,47 +1,56 @@
 <!--pages/work/money/money.wxml-->
 <view class="cu-custom" style="height:{{CustomBar}}px;">
-  <view class="cu-bar fixed bg-gradual-blue" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
-    <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
-      <text class='icon-back'></text> 工资报表
-    </navigator>
-  </view>
+    <view class="cu-bar fixed bg-gradual-blue" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+        <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
+            <text class='icon-back'></text> 工资报表
+        </navigator>
+    </view>
 </view>
 
 <view class="cu-list menu sm-border card-menu margin-top">
-  <view class="cu-item arrow" bindtap='doAction' data-flag="0">
-    <view class='content'>
-      <text class='icon-flashbuyfill text-blue'></text>
-      <text class='text-grey'>工资发放</text>
+    <view class="cu-item arrow" bindtap='doAction' data-flag="0">
+        <view class='content'>
+            <text class='icon-flashbuyfill text-blue'></text>
+            <text class='text-grey'>工资发放</text>
+        </view>
+        <view class='action'>
+            <text class='text-grey text-sm'>按月发放</text>
+        </view>
     </view>
-    <view class='action'>
-      <text class='text-grey text-sm'>按月发放</text>
+    <view class="cu-item arrow" bindtap='doAction' data-flag="1">
+        <view class='content'>
+            <text class='icon-sort text-brown'></text>
+            <text class='text-grey'>出勤统计</text>
+        </view>
+        <view class='action'>
+            <text class='text-grey text-sm'>出勤天数</text>
+        </view>
     </view>
-  </view>
-  <view class="cu-item arrow" bindtap='doAction' data-flag="1">
-    <view class='content'>
-      <text class='icon-sort text-brown'></text>
-      <text class='text-grey'>出勤统计</text>
+    <view class="cu-item arrow" bindtap='doAction' data-flag="2">
+        <view class='content'>
+            <text class='icon-coin text-cyan'></text>
+            <text class='text-grey'>部门底薪</text>
+        </view>
+        <view class='action'>
+            <text class='text-grey text-sm'>设置底薪</text>
+        </view>
     </view>
-    <view class='action'>
-      <text class='text-grey text-sm'>出勤天数</text>
+    <view class="cu-item arrow" bindtap='doAction' data-flag="3">
+        <view class='content'>
+            <text class='icon-moneybag text-red'></text>
+            <text class='text-grey'>奖惩</text>
+        </view>
+        <view class='action'>
+            <text class='text-grey text-sm'>设置金额</text>
+        </view>
     </view>
-  </view>
-  <view class="cu-item arrow" bindtap='doAction' data-flag="2">
-    <view class='content'>
-      <text class='icon-coin text-cyan'></text>
-      <text class='text-grey'>部门底薪</text>
+	 <view class="cu-item arrow" bindtap='doAction' data-flag="4">
+        <view class='content'>
+            <text class='icon-moneybag text-red'></text>
+            <text class='text-grey'>报表下载</text>
+        </view>
+        <view class='action'>
+            <text class='text-grey text-sm'>工资报表</text>
+        </view>
     </view>
-    <view class='action'>
-      <text class='text-grey text-sm'>设置底薪</text>
-    </view>
-  </view>
-  <view class="cu-item arrow" bindtap='doAction' data-flag="3">
-    <view class='content'>
-      <text class='icon-moneybag text-red'></text>
-      <text class='text-grey'>奖惩</text>
-    </view>
-    <view class='action'>
-      <text class='text-grey text-sm'>设置金额</text>
-    </view>
-  </view>
 </view>

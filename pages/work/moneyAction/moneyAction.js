@@ -58,7 +58,7 @@ Page({
                     }
                 }
             }
-        })
+        });
     },
     //监听工资发放选择器
     bindWagesChange(e) {

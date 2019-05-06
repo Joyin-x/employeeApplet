@@ -17,7 +17,6 @@ Page({
     onLoad: function(options) {
         this.getInfo();
         let id = app.getDepartmentID1();
-		console.log(id);
         if (this.data.userInfo.flag != 2) {
             if (id != this.data.userInfo.department_id) {
                 wx.showModal({
@@ -62,9 +61,25 @@ Page({
     doAction(e) {
         let flag = e.currentTarget.dataset.flag;
         let userInfo = this.data.userInfo;
-        wx.navigateTo({
-            url: '/pages/work/moneyAction/moneyAction?flag=' + flag,
-        });
+		if(flag==4){
+			wx.downloadFile({
+				url: app.globalData.baseUrl +'/own/outputInformation', 
+				success(res) {
+					if(res.statusCode==200){
+								wx.openDocument({
+									filePath: res.tempFilePath,
+									success:function(r){
+										console.log("打开文档成功");
+									}
+								})
+					}
+				}
+			})
+		}else{
+			wx.navigateTo({
+				url: '/pages/work/moneyAction/moneyAction?flag=' + flag,
+			});
+		}
     },
     /**
      * 生命周期函数--监听页面初次渲染完成
