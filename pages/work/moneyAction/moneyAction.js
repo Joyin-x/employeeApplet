@@ -77,29 +77,25 @@ Page({
     },
     //获取工资列表
     getWagesList(that, departmentId) {
-        wx.showLoading({
-          title: '正在计算工资',
-          mask:true
-        })
         let id = that.data.departmentList[departmentId].id;
         wx.request({
             url: app.globalData.baseUrl + "/money/payMoney",
             data: {
-                id: id
+                id: id,
+                month:new Date().getMonth()
             },
             success(res) {
-              wx.hideLoading();
                 if (res.data.code == 412) {
                     wx.showModal({
                         title: '提示',
-                        content: res.data.msg,
+                      content: "发放失败，" +(new Date().getMonth())+"月工资已发放",
                         showCancel: false,
                         confirmText: '去查看',
                         confirmColor: '#1E90FF'
                     });
                 } else {
                     wx.showToast({
-                        title: '发放成功',
+                        title: (new Date().getMonth())+'月工资已发放',
                         mask: true
                     })
                 }
@@ -179,7 +175,7 @@ Page({
                 if (res.data.code == 200) {
                     wx.showModal({
                         title: '提示',
-                        content: '已出勤' + res.data.data + '天',
+                        content: (new Date().getMonth()+1)+'月已出勤' + res.data.data + '天',
                         showCancel: false,
                         confirmColor: '#1E90FF'
                     })

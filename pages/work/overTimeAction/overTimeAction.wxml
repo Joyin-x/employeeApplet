@@ -104,7 +104,7 @@
             </view>
             <view class="cu-form-group">
                 <view class='title'>部门</view>
-                <input class='radius' name='input' value="{{userInfo.department_id}}" disabled></input>
+                <input class='radius' name='input' value="{{userInfo.department_name}}" disabled></input>
             </view>
             <view class="cu-form-group">
                 <view class='title'>职位</view>

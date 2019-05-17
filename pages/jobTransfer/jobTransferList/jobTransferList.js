@@ -20,6 +20,7 @@ Page({
     this.setData({
       id: options.id
     });
+    this.getDepartmentList();
     this.getMobilizeWithId();
   },
   //根据员工id查找该员工岗位调动记录
@@ -35,9 +36,8 @@ Page({
       },
       method: 'POST',
       success: function(res) {
-        console.log(res);
         if (res.data.code = 200) {
-          let department = app.globalData.departmentList,
+          let department = that.data.departmentList,
             list = res.data.data;
           for (let i = 0; i < list.length; i++) {
             for (let j = 0; j < department.length; j++) {
@@ -56,45 +56,58 @@ Page({
       }
     })
   },
-  //删除员工调动记录
-  deleteMobilize(e) {
-    let id = app.getDepartmentID();
-    if (wx.getStorageSync("userInfo").flag == 2 || wx.getSystemInfoSync("userInfo").department_id == id) {
-      let id = e.target.dataset.id,
-        that = this;
-      wx.request({
-        url: app.globalData.baseUrl + '/mobilize/deleteMobilize',
-        data: {
-          id: id
-        },
-        success(res) {
-          if (res.data.code == 200) {
-            setTimeout(function() {
-              wx.navigateBack({
-                delta: 1
-              })
-            }, 2000);
-            wx.showToast({
-              title: res.data.msg,
-            });
-          } else {
-            wx.showToast({
-              title: res.data.msg,
-              image: '/images/warning.png'
-            })
-          }
+  //获取部门名和对应的id号
+  getDepartmentList: function() {
+    let that = this;
+    wx.request({
+      url: app.globalData.baseUrl + '/department/list',
+      success: function(res) {
+        if (res.data.code == 200) {
+          that.setData({
+            departmentList: res.data.data
+          });
         }
-      })
-    } else {
-      wx.showModal({
-        title: '警告',
-        content: '你的职务为' + wx.getStorageSync("userInfo").position + ',权限不足',
-        showCancel: false,
-        confirmText: "返回",
-        confirmColor: "#00BFFF",
-      });
-    }
-
+      }
+    })
+  },
+  //删除员工调动记录
+  deleteMobilize(e){
+	  let id=app.getDepartmentID();
+	  if (wx.getStorageSync("userInfo").flag == 2 || wx.getSystemInfoSync("userInfo").department_id==id){
+		  let id = e.target.dataset.id, that = this;
+		  wx.request({
+			  url: app.globalData.baseUrl + '/mobilize/deleteMobilize',
+			  data: {
+				  id: id
+			  },
+			  success(res) {
+				  if (res.data.code == 200) {
+					  setTimeout(function () {
+						  wx.navigateBack({
+							  delta: 1
+						  })
+					  }, 2000);
+					  wx.showToast({
+						  title: res.data.msg,
+					  });
+				  } else {
+					  wx.showToast({
+						  title: res.data.msg,
+						  image: '/images/warning.png'
+					  })
+				  }
+			  }
+		  })
+	  }else{
+		  wx.showModal({
+			  title: '警告',
+			  content: '你的职务为' + wx.getStorageSync("userInfo").position+ ',权限不足',
+			  showCancel: false,
+			  confirmText: "返回",
+			  confirmColor: "#00BFFF",
+		  });
+	  }
+   
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -64,7 +64,8 @@ Page({
       success: function(res) {
         console.log(res);
         if (res.data.code == 200) {
-          let data = res.data.data
+          let data = res.data.data;
+          data.department_name=app.getDepartmentName(data.department_id);
           wx.setStorageSync('userInfo', data);
           setTimeout(function() {
             wx.navigateBack({
@@ -87,25 +88,6 @@ Page({
         }
       }
     });
-  },
-  //添加用户头像到数据库
-  addImage() {
-    let that = this;
-    wx.uploadFile({
-      url: app.globalData.baseUrl + '/notice/addImage',
-      filePath: that.data.url,
-      name: 'file',
-      method: "POST",
-      header: {
-        "Content-Type": "multipart/form-data"
-      },
-      formData: {
-        'user': that.data.data.userId
-      },
-      success: function(res) {
-        console.log(res);
-      },
-    })
   },
   //显示隐藏用户授权窗口
   showModal() {

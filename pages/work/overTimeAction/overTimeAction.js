@@ -109,6 +109,13 @@ Page({
     //提交加班申请请求
     submit: function(e) {
         let that = this;
+      if (e.detail.value.reason == null || e.detail.value.reason == "") {
+        wx.showToast({
+          title: '申请理由为空',
+          image: '/images/warning.png'
+        });
+        return;
+      }
         wx.request({
             url: app.globalData.baseUrl + '/overtime/addOverTimeRecord',
             data: {

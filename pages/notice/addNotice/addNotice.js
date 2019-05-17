@@ -19,7 +19,20 @@ Page({
 	},
 	//点击提交公告消息
 	addSubmit:function(e){
-    console.log(util.formatDate(new Date()));
+    if (e.detail.value.noticeName == null || e.detail.value.noticeName == "") {
+      wx.showToast({
+        title: '公告标题为空',
+        image: '/images/warning.png'
+      });
+      return;
+    }
+    if (e.detail.value.noticeContent == null || e.detail.value.noticeContent==""){
+      wx.showToast({
+        title: '公告内容为空',
+        image: '/images/warning.png'
+      });
+      return;
+    }
 		wx.request({
 			url: app.globalData.baseUrl + "/notice/addNotice",
 			method: 'POST',

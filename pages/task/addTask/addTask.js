@@ -61,6 +61,13 @@ Page({
   },
   //提交指派任务
   addTask:function(task){
+    if (task.taskContent == null || task.taskContent == "") {
+      wx.showToast({
+        title: '指派工作为空',
+        image: '/images/warning.png'
+      });
+      return;
+    }
     wx.request({
       url: app.globalData.baseUrl + '/mobilize/addTask',
       data: {

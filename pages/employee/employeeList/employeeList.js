@@ -186,7 +186,6 @@ Page({
     },
     //表单提交
     formSubmit(e) {
-        console.log(e);
         let item = e.detail.value,
             that = this;
         if (item.phone == "") {
@@ -214,11 +213,15 @@ Page({
             wx.showModal({
                 title: '错误提示',
                 content: '只支持qq邮箱和网易邮箱，请重新填写!!!',
+                confirmColor:'#00c8fa',
                 showCancel: false
             })
             return;
         }
         item.native_place = item.native_place[0] + item.native_place[1] + item.native_place[2];
+        wx.showLoading({
+          title: '正在添加...',
+        })
         wx.request({
             url: app.globalData.baseUrl + '/employee/addEmployee',
             data: {
@@ -242,7 +245,7 @@ Page({
                 'content-type': 'application/json'
             },
             success(res) {
-                console.log(res);
+              wx.hideLoading();
                 if (res.data.code == 200) {
                     wx.showModal({
                         title: '提示',

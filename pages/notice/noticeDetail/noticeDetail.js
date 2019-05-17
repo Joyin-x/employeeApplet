@@ -65,7 +65,7 @@ Page({
       wx.showToast({
         title: '评论为空',
         image:'/images/warning.png',
-      });
+      })
     }else{
       wx.request({
         url: app.globalData.baseUrl+'/notice/addDiscuss',

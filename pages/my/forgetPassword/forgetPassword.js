@@ -15,18 +15,21 @@ Page({
     email=e.detail.value.email;
     if(phone==""){
       wx.showToast({
-        title: "手机号不能为空",
+        title: "手机号为空",
         image: '/images/warning.png'
       });
       return;
     }
     if (email == "") {
       wx.showToast({
-        title: "邮箱不能为空",
+        title: "邮箱为空",
         image: '/images/warning.png'
       });
       return;
     }
+    wx.showLoading({
+      title: '正在重置...',
+    })
     wx.request({
       url: app.globalData.baseUrl+'/own/forgetPassword',
       data:{
@@ -34,7 +37,7 @@ Page({
         email:email,
       },
       success(res){
-        console.log(res);
+        wx.hideLoading();
         if(res.data.code==200){
           setTimeout(function(){
             wx.navigateBack({
@@ -47,9 +50,11 @@ Page({
           })
         }
        else{
-         wx.showToast({
-           title: res.data.msg,
-           image:'/images/warning.png'
+         wx.showModal({
+           title: '错误提示',
+           content: res.data.msg,
+           showCancel:false,
+           confirmColor:'#FF1493'
          })
        }
       }
